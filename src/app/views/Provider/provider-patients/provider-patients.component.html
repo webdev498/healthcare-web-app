@@ -1,0 +1,43 @@
+<mat-card class="provider-card">
+        <div fxLayoutAlign="center center">
+            <mat-spinner *ngIf="!isload"></mat-spinner>
+        </div>
+        <div *ngIf="isload">
+            <mat-card-title *ngIf="available">        
+                {{ waitList.PatientWaitList.length }} Patients currently waiting...     
+            
+            </mat-card-title>
+        </div>
+    <mat-card-content>
+        <div *ngIf="isload">
+                <mat-list *ngIf="available">
+                        <mat-list-item *ngFor="let item of waitList.PatientWaitList; let i = index"
+                                        (click)="liPatient_click(item)"
+                                        [ngClass]="{ 'odd': ((i % 2) != 0) }"
+                                        >
+                                <!--<img matListAvatar
+                                        [src]="consultation.Patient.Avatar"
+                                        alt="Picture of {{consultation.Patient.Name}}"
+                                >-->
+                                <h3 matLine> {{item.FirstName}} </h3>
+                                <span class="reason">{{ item.ReasonForVisit }}</span>
+                                <span class="time-waiting">{{item.WaitTime}}</span>
+                                <button mat-icon-button (click)="cmdChatWithPatient_click(item)">
+                                    <mat-icon aria-label="Chat">chat</mat-icon>
+                                </button>
+                                <p matLine>
+                                <!--<span class="sex"> {{consultation.Patient.Sex}} - </span>
+                                <span class="age"> {{consultation.Patient.Age}} y/o</span>-->
+                                </p>
+                        </mat-list-item>
+                </mat-list>
+        </div>
+
+        
+
+        <div [class]="isProviderAvailable()">
+            You are unavailable right now...
+        </div>
+
+    </mat-card-content>
+</mat-card>

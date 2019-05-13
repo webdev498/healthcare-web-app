@@ -1,0 +1,57 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="cancel()" class="hover-close">close</mat-icon>
+</div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h1>Absence Notes</h1>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column">
+            <div>
+                <form [formGroup]="form" (ngSubmit)="save()">
+                    <mat-form-field class="input-width">
+                        <mat-label>For:</mat-label>
+                        <input matInput placeholder="Enter Name of Absentee" formControlName="for" oncopy="return false" onpaste="return false" value="{{for}}">
+                    </mat-form-field>
+                    <br/>
+
+                    <mat-form-field class="input-width">
+                        <mat-label>Return:</mat-label>
+                        <input matInput placeholder="Return to school/work:" formControlName="return" oncopy="return false" onpaste="return false"
+                        value="{{return}}">
+                    </mat-form-field>
+                    <br/>
+                    <mat-form-field class="input-width">                   
+                       <mat-label>Restriction:</mat-label>
+                        <textarea maxlength="250" matInput formControlName="restriction" matAutosizeMaxRows=5  matAutosize=true value={{restriction}}>
+                        </textarea>
+                    </mat-form-field>
+                    <br/>
+
+                    <!--<mat-form-field class="input-width">
+                        <textarea maxlength="250" matInput formControlName="notes" matAutosizeMaxRows=5  matAutosize=true value={{notes}}>
+
+                        </textarea>
+                    </mat-form-field>-->
+                    <br/>
+
+                    <mat-form-field class="input-width">
+                        <input matInput placeholder="Provider" formControlName="provider"
+                        oncopy="return false" onpaste="return false" value="{{provider}}">
+                    </mat-form-field>
+                    <br/>
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <div>
+                            <button mat-raised-button (click)="cancel()">Cancel</button>
+                        </div>
+                        <div>
+                            <button mat-raised-button type="submit" color="primary" [disabled]="!form.valid">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>        
+    </mat-card-content>
+</mat-card>

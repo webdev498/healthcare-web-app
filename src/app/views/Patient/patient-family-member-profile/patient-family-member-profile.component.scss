@@ -1,0 +1,23 @@
+@import '../../../../assets/scss/colors-fonts.scss';
+
+.patient-card {
+	
+	padding: 0 !important;
+	
+	.mat-card-title {
+		display: none;
+	}
+
+	::ng-deep.mat-tab-header {
+		border-bottom: 0;
+	}
+	
+	::ng-deep.mat-tab-body-wrapper {
+		padding: 0;
+	}
+	
+	::ng-deep.mat-tab-label-container {
+		background-color: $text-link-color;
+	}
+	
+}

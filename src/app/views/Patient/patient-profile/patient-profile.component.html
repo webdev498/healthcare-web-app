@@ -1,0 +1,131 @@
+<mat-card class="patient-card">
+
+    <mat-card-title class="text-center">
+        My Profile
+    </mat-card-title>
+
+    <mat-card-content>
+
+        <div fxLayoutAlign="center center" *ngIf="!isLoaded">
+            <mat-spinner></mat-spinner>
+        </div>
+
+        <div *ngIf="isLoaded">
+            <form [formGroup]="_profileForm" novalidate>
+
+                <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="50px" class="columns">
+
+                    <div fxFlex="50%">
+
+                        <div class="photo text-center">
+                            <img [src]="getLinkPicture()" alt="profile photo" width="150px" height="150px">
+							<br>
+
+                            <button mat-button color="accent" (click)="cmdUpdatePhoto_click()">Change Profile Photo</button>
+                        </div>
+
+                        <br>
+                        <mat-form-field class="input-width">
+                            <mat-select placeholder="Title" formControlName="title">
+                                <mat-option *ngFor="let t of titles" [value]="t.value">
+                                    {{ t.value }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="First Name" formControlName="firstName" value="{{user.FirstName}}" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Middle Name" formControlName="middleName" value="{{user.MiddleName}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Last Name" formControlName="lastName" value="{{user.LastName}}">
+                        </mat-form-field>
+
+
+                        <mat-form-field class="input-width">
+                            <input matInput [matDatepicker]="picker" (focus)="picker.open()" [value]="date.value" placeholder="Date of Birth" formControlName="dateOfBirth"
+                                required>
+                            <!--<input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Date of Birth" formControlName="dateOfBirth"
+                                value="">-->
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+
+                    </div>
+                    <div fxFlex="50%">
+
+                        <mat-form-field class="input-width">
+                            <mat-select placeholder="Gender" formControlName="gender" required>
+                                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                    {{ gender.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Email" formControlName="email" required value="{{user.Email}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput type="tel" placeholder="Primary Phone" formControlName="primaryNumber" required value="{{user.PrimaryPhone}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput type="tel" placeholder="Alternate Phone" formControlName="alternateNumber" value="{{user.AlternatePhone}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Address Line1" formControlName="address1" value="{{user.Address1}}" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Address Line2" formControlName="address2" value="{{user.Address2}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="City" formControlName="city" required value="{{user.City}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <mat-select placeholder="State" formControlName="state" required>
+                                <mat-option *ngFor="let st of states" [value]="st.value">
+                                    {{ st.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Zip Code" formControlName="zip" required value="{{user.Zip}}">
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center" *ngIf="showResultOperation">
+                    <br>
+                    <span *ngIf="resultOperation" class="text-green">{{ messageUpdateOperation }}</span>
+                    <span *ngIf="!resultOperation" class="text-red">{{ messageUpdateOperation }}</span>
+                </div>
+
+                <div class="text-center">
+                    <br>
+                    <button mat-raised-button color="primary" type="button" (click)="cmdChangePassword_click()">Change Password</button>
+                    <button mat-raised-button type="button" (click)="cmdRegisterUser_click()">Save Changes</button>
+                </div>
+
+                <p class="text-center">
+                    Required fields (*) need to be completed before proceeding.
+                </p>
+				
+            </form>
+
+        </div>
+
+    </mat-card-content>
+
+</mat-card>

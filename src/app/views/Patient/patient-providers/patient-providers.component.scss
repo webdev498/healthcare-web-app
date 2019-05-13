@@ -1,0 +1,118 @@
+@import '../../../../assets/scss/colors-fonts.scss';
+
+.emergency {
+	display: block;
+	padding: 1rem;
+	background: $red-color;
+	color: #fff;
+}
+
+.specialty-header {
+    background-color: $heading-font-color;
+	color: #fff;
+	margin: 1rem 0;
+	padding: 1rem 1.5rem;
+}
+
+.mat-list {
+	padding-top: 0 !important;
+}
+
+.mat-expansion-panel {
+	margin: 1rem 0;
+	padding: 0;
+	box-shadow: none !important;
+	border: 1px solid #ccc;
+	
+	.mat-expansion-panel-header {
+		justify-content: space-between;
+		height: auto !important;
+		min-height: 6rem; //match photo height
+		margin: 0;
+		padding: 1.5rem;
+		font-size: inherit;
+		
+		::ng-deep.mat-expansion-indicator:after {
+			border-width: 0 3px 3px 0;
+			padding: 0;
+			margin-top: -6px;
+			width: 12px;
+			height: 12px;
+		}
+		
+		.mat-expansion-panel-header-title {
+			justify-content: flex-start;
+			align-items: center;
+			
+			.provider-photo {
+				display: block;
+				position: relative;
+				width: 6rem;
+				height: 6rem;
+				overflow: hidden;
+				margin-right: 1.5rem;
+				border-radius: 100%;
+				background: #ccc;
+				
+				img {
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100% !important;
+					height: auto !important;
+				}
+				
+			}
+			
+			.provider-name > * {
+				margin: 0;
+			}
+			
+		}
+		
+		.mat-expansion-panel-header-description {
+			justify-content: flex-end;
+			align-items: center;
+		}
+		
+	}
+	
+	::ng-deep.mat-expansion-panel-content {
+		font-size: inherit;
+		padding: 0 1.5rem;
+		
+		.mat-expansion-panel-body {
+			padding: 1.5rem 0;
+			border-top: 1px solid #ccc;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			
+			.mat-raised-button {
+				width: 20rem !important;
+			}
+			
+			.provider-details {
+				display: flex;
+				width: 100%;
+				flex-flow: row wrap;
+				justify-content: space-between;
+				align-items: center;
+				align-content: center;
+				padding-left: 1.5rem;
+				
+				span {
+					display: block;
+					width: 49%;
+					margin-top: 1rem;
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

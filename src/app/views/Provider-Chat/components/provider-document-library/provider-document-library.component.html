@@ -1,0 +1,38 @@
+<mat-card>
+    <div fxLayoutAlign="center center">
+        <mat-spinner *ngIf="!isLoad"></mat-spinner>
+    </div>
+    <div *ngIf="isLoad">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              Document Library
+            </div>
+        
+            <div fxLayoutAlign="end start">
+              <mat-icon *ngIf="documentSelected" matTooltip="Delete Document" (click)="deleteDocument()">delete</mat-icon>
+              <mat-icon *ngIf="documentSelected" matTooltip="View Document" (click)="viewDocument()">search</mat-icon>
+              <mat-icon matTooltip="Add a Document" (click)="addDocument()">add</mat-icon>
+            </div>
+          </div>
+        
+          <mat-list>
+            <mat-list-item class="border-div hover-provider" 
+              *ngFor="let item of documents.DocumentList" 
+              [ngStyle]="{'background-color':documentSelected === item.FileName ? 'lightgray' : '' }" 
+              (click)="selectDocument(item)"
+              [dndDraggable]="item.FileLink"
+                       [dndEffectAllowed]="efectallow"
+                       [dndDisableIf]="false"
+                       (dndStart)="onDragStart($event)"
+                      (dndCopied)="onDragged($event, 'copy')"
+                      (dndLinked)="onDragged($event, 'link')"
+                      (dndMoved)="onDragged($event, 'move')"
+                      (dndCanceled)="onDragged($event, 'none')"
+                      (dndEnd)="onDragEnd($event)"
+            >
+              <h4 mat-line>{{item.FileName}}</h4>
+            </mat-list-item>
+          </mat-list>
+    </div> 
+
+</mat-card>

@@ -1,0 +1,43 @@
+<mat-card class="login-card">
+
+	<mat-card-title class="text-center">
+		Security Questions
+	</mat-card-title>
+
+		<mat-card-subtitle class="text-center">
+			3 Questions Required
+		</mat-card-subtitle>
+
+
+		<mat-card-subtitle class="text-center">
+			Step 2 of 3
+		</mat-card-subtitle>
+
+
+
+	<mat-card-content class="text-center">
+
+		
+		<form [formGroup]="_userRegSecQuestForm" (ngSubmit)="cmdRegisterUser_click()" novalidate>
+			<div formArrayName="question">
+				<!--<h3>Questions</h3>-->
+			  
+				<div *ngFor="let q of question.controls; let i=index">
+				  <!-- The repeated alias template -->
+				  <mat-form-field>
+					  <input matInput value="" placeholder="{{q.value.placeholder}}" [formControlName]="i" (change)="questionValidate($event)">
+				  </mat-form-field>
+				</div>
+			  </div>
+
+			<div class="text-center text-red" *ngIf="showError">
+				{{ error }}
+			</div>
+
+			<!--<button mat-raised-button type="button" (click)="onPrevious()">Previous</button>-->
+			<button mat-raised-button type="submit">Continue</button>
+		</form>
+
+	</mat-card-content>
+
+</mat-card>

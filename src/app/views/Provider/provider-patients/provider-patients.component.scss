@@ -1,0 +1,76 @@
+.provider-card
+{
+    min-width:85%;
+    /* max-height:852px; */
+    margin: 0;
+}
+
+mat-list-item:hover
+{
+    background-color: #ddd;
+    cursor:pointer;
+}
+
+mat-list-item:active
+{
+    background-color: rgba(73, 76, 167, 0.467);
+    cursor:pointer;
+}
+
+.odd
+{
+    background-color: #f4f4f4;
+}
+
+.sex
+{
+    color: #888;
+}
+
+.age
+{
+    color: #aaa;
+}
+
+.item-mouse-down
+{
+    background-color: green;
+}
+
+.reason
+{
+    font-size: 15px;
+    color: #aaa;
+    min-width: 25%;
+    max-width: 35%;
+}
+
+.time-waiting
+{
+    font-size: 15px;
+    color: #888;
+    min-width: 10%;
+    max-width: 15%;
+}
+
+.overlay-on
+{
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(00,00,00,0.9);
+    min-width: 100%;
+    min-height: calc(100% - 120px);
+    color: white;
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 120px;
+
+}
+
+.overlay-off
+{
+    display: none;
+}

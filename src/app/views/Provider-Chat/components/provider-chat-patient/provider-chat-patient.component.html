@@ -1,0 +1,35 @@
+<input [hidden]="true" type="text" id="provID" value="{{providerId}}" />
+<input [hidden]="true" type="text" id="patientName" value="{{patient.PatientFirstName}}" />
+<input [hidden]="true" type="text" id="patientLastName" value="{{patient.PatientLastName}}" />
+<input [hidden]="true" type="text" id="currVisitId" value="{{patient.VisitID}}" />
+<input [hidden]="true" type="text" id="token" value="{{token}}" />
+<div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="chat-container">
+    <mat-card fxFlex="40%" class="button-chat" (click)="StartVideo()">
+        <mat-icon class="chat-icon">videocam</mat-icon><span>Start video</span>
+    </mat-card>
+    <mat-card fxFlex = "40%" class="button-chat" (click)="StartVoice()">
+        <mat-icon class="chat-icon">call</mat-icon><span>Start voice</span>
+    </mat-card>
+</div>
+
+<div id="lblActivityStatus" class="StatusBar"></div><br />
+    <!--<div id="buttons" class="ButtonRow">
+        <button class="VisitPatientTab" onclick="CloseVisit()" id="btnCloseVisit"></button>    
+    </div>
+    <div id="tabs" class="TabRow">
+    </div>-->
+<!--iframe_chatui_{{patient.VisitID}}-->
+    <div class="chat-ui-container">
+      <iframe id="iframe_chatui" src="" class="chatiframe"
+      dndDropzone
+        (dndDragover)="onDragover($event)"
+        (dndDrop)="onDrop($event)">
+        {{lastDropEvent}}
+    </iframe>
+        <div>
+            <button mat-raised-button (click)="EndOfVisit()" id="endVisit_{{patient.VisitID}}">End Visit</button>
+            <button class="hideButton" id="execAction" (click)="postVisit()"></button>
+        </div>
+    </div>
+    
+

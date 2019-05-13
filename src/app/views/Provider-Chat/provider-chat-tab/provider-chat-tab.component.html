@@ -1,0 +1,25 @@
+<div fxLayout="column">
+  <div class="navigation-header">
+    <button mat-raised-button (click)="backPatient()" matBadge="patientWaiting"  matBadgeColor="accent">     
+        <mat-icon>keyboard_arrow_left</mat-icon>
+        Wait List ({{patientWaiting}})
+    </button>
+    <br>
+  </div>
+  <div fxFlex>
+      <mat-tab-group (focusChange) = "onLinkClick($event)">
+          <mat-tab *ngFor="let item of tabs; let index = index"  >           
+              <ng-template mat-tab-label >
+                  {{item.PatientFirstName}}
+                  <button mat-icon-button (click)="removeTab(index)" [disabled] = "GetDisableButton(index,item.VisitID)"
+                  id="btn_{{item.VisitID}}">
+                      <mat-icon>clear</mat-icon>
+                  </button>               
+                </ng-template>                      
+            <app-progress-encounter [patient] = 'item' (closeTab) = "CloseTab($event)" (changeVisitId)="ChangeVisitId($event)"></app-progress-encounter>
+          </mat-tab>            
+      </mat-tab-group>
+  </div>
+  
+</div>
+

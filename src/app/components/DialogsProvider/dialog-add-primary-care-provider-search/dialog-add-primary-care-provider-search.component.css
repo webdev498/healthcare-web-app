@@ -1,0 +1,27 @@
+.highlight {
+    background: #42A948; /* green */
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+tr:nth-child(even) {
+    background-color: #d1d1d1
+}
+
+.hover-provider:hover{
+    cursor: pointer;  
+}
+
+.selected-row{
+    background-color: aqua;
+}
+
+.hover-close:hover{
+    cursor: pointer;  
+  }

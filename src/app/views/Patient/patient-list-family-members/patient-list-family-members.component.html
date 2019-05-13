@@ -1,0 +1,27 @@
+<mat-card class="patient-card">
+	<mat-card-content>
+		
+		<div fxLayoutAlign="center center" *ngIf="!isLoaded">
+			<mat-spinner></mat-spinner>
+		</div>
+
+		<div *ngIf="isLoaded">
+			<div *ngIf="familyCount <= 1" class="text-center">
+				<h3>
+					No Current Family Members
+				</h3>
+			</div>
+
+			<div *ngFor="let member of familyList">
+				<div *ngIf="!member.IsPrimary" class="family-member" (click)="showInfoMember(member)" [ngClass]="{deactivate: member.IsActive != true }">
+					<h4>
+						<mat-icon>account_circle</mat-icon> {{ member.DisplayName }}
+					</h4>
+					<mat-icon class="arrow" *ngIf="!member.IsPrivate">keyboard_arrow_right</mat-icon>
+					<mat-icon *ngIf="member.IsPrivate">lock</mat-icon>
+				</div>
+			</div>
+		</div>
+
+	</mat-card-content>
+</mat-card>

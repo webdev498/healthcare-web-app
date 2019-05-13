@@ -1,0 +1,12 @@
+h3
+{
+    color: gray;
+}
+
+.card-navigation-icon
+{
+   display:inline-block;
+   vertical-align:middle;
+   margin-top:-3px;
+}
+

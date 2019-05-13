@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Add Family Member</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+    <p>
+      You do not have any open slots for additional family member under your current payment plan. 
+      The patient will be added as an additional family member at $4.95/mo for 5 additional visits per month. 
+      The difference in billing will start immediately and the new subscription total will begin at the start of 
+      the next billing cycle.  
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="center start">
+      <button mat-button mat-raised-button color="primary" (click)="confirmRegistration()">Continue</button>
+      <button mat-button mat-raised-button (click)="closeDialog()">Cancel</button>
+</mat-dialog-actions>

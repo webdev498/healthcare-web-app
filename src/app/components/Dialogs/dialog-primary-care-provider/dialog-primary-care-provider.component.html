@@ -1,0 +1,66 @@
+<div *ngIf="!searched">
+<h2 mat-dialog-title class="dialog-title text-center">Add Primary Care Provider</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+  <mat-form-field>
+      <input matInput placeholder="First Name" [(ngModel)]="firstname">
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput placeholder="Last Name" [(ngModel)]="lastname">
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput placeholder="City" [(ngModel)]="city">
+  </mat-form-field>
+
+    <mat-form-field class="input-width">
+      <mat-select [(ngModel)]="state" placeholder="State" required>
+        <mat-option *ngFor="let st of States" [value]="st.value">
+          {{ st.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+</mat-dialog-content>
+
+  <mat-dialog-actions fxLayoutAlign="center start">
+    <button class="mat-raised-button mat-primary" (click)="searchPrimaryCareProvider()">{{ operationType }}</button>
+  </mat-dialog-actions>
+</div>
+
+<div fxLayoutAlign="center center" *ngIf="searched && !isLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="searched && isLoaded">
+  <div id="table-wrapper">
+    <div id="table-scroll">
+      <table>
+        <th>Full Name</th>
+        <th>Company</th>
+        <th>Specialty</th>
+
+        <tbody>
+          <tr class="hover-close" [ngStyle]="{'background-color':i === providerRowSelected ? 'grey' : '' }" *ngFor="let item of providerSearched; let i of index" (click)="select(item,i)">
+            <td>{{ item.DisplayName }}</td>
+            <td>{{ item.PracticeName }}</td>
+            <td>{{ item.Specialty }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div>
+      <mat-checkbox (change)="dontSeeProviderCB($event)">Don't see your primary care provider name or group practice?</mat-checkbox>
+  </div>
+
+  <mat-dialog-actions fxLayoutAlign="center start">
+    <button class="mat-raised-button mat-primary" [disabled]="isSelectDisabled" (click)="selectPrimaryCareProvider()">Select</button>
+  </mat-dialog-actions>
+</div>

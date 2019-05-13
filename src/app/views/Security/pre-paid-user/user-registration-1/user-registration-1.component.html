@@ -1,0 +1,115 @@
+<mat-card class="login-card">
+	<mat-card-title class="text-center">
+		New User Registration
+	</mat-card-title>
+	<mat-card-subtitle class="text-center">
+		Step 1 of 3
+	</mat-card-subtitle>
+
+
+	<div *ngIf="!isLoaded" fxLayoutAlign="center center">
+		<mat-spinner></mat-spinner>
+	</div>
+
+	<mat-card-content *ngIf="isLoaded">
+
+		<form [formGroup]="_userRegForm1" (ngSubmit)="cmdRegisterUser_click()" novalidate>
+
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="30px" class="columns">
+
+				<div fxFlex="50%">
+
+					<mat-form-field>
+						<input matInput placeholder="First Name" formControlName="firstName">
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Last Name" formControlName="lastName">
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput [matDatepicker]="picker" (focus)="picker.open()" [value]="date.value" placeholder="Date of Birth" formControlName="dateOfBirth"
+						 required>
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+
+					<mat-form-field>
+						<mat-select placeholder="Gender" formControlName="gender" required>
+							<mat-option *ngFor="let gender of genders" [value]="gender.value">
+								{{ gender.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Insurance/Employer" formControlName="insurance-employer" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Phone" formControlName="contactNumber" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Address line 1" formControlName="addressLine1" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Address line 2" formControlName="addressLine2">
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="City" formControlName="city" required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<mat-select placeholder="State" formControlName="state" required>
+							<mat-option *ngFor="let st of states" [value]="st.value">
+								{{ st.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Zip" formControlName="zip" required>
+					</mat-form-field>
+
+				</div>
+				<div fxFlex="50%">
+
+					<div>
+						<p><label><strong>Account Password *</strong></label></p>
+						<p><label>Password must be between 6-10 characters and contain at least 1 capital letter, 1 number and 1 symbol (e.g.
+								?, !,)</label></p>
+					</div>
+
+					<mat-form-field>
+						<input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password" required>
+						<mat-icon matTooltip="View password" matSuffix style="cursor:pointer;" (click)="hide = !hide">{{ hide ? 'visibility'
+							: 'visibility_off' }}</mat-icon>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPass" placeholder="Confirm Password" required>
+					</mat-form-field>
+
+					<mat-checkbox (change)="checkTermOfUse = !checkTermOfUse">I agree to the Terms of Use</mat-checkbox>
+					<a mat-icon-button (click)="cmdTermOfUse_click()">
+						<mat-icon color="accent" aria-label="Terms of Use">info</mat-icon>
+					</a>
+				</div>
+
+			</div>
+
+			<div class="text-center">
+				<div class="error" *ngIf="_passwordError">Check that the passwords match and that the terms and conditions are marked</div>
+				<span style="color:red" *ngIf="error" class="text-center">{{ errorText }}</span>
+				<br>
+				<button mat-raised-button type="submit" [disabled]="!_userRegForm1.valid">Continue</button>
+			</div>
+
+		</form>
+
+	</mat-card-content>
+
+</mat-card>

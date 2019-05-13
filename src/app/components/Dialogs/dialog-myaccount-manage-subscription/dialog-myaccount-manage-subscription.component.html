@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+  <mat-icon (click)="cancelDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Manage Subscription</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+    <p>Save changes to your credit card information?</p>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button mat-raised-button color="primary" (click)="confirmDialog()">Confirm</button>
+    <button mat-raised-button (click)="cancelDialog()">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,37 @@
+<mat-card class="provider-card">
+    <mat-card-title>
+        <h3>
+            <span>
+                <mat-icon class="mat-icon material-icons card-navigation-icon" role="img" aria-hidden="true">
+                    local_hospital
+                </mat-icon>
+                &nbsp; My Incomplete Visits
+            </span>
+        </h3>
+    </mat-card-title>
+    <mat-card-content>
+    <div fxLayoutAlign="center center">
+            <mat-spinner *ngIf="!isLoad"></mat-spinner>
+    </div>
+    <div *ngIf="isLoad">    
+
+        <div class="border-div hover-provider" *ngFor="let item of visitsIncomplete" (click)="selectVisit(item)">
+            <div fxFlex="80">
+                <h5 class="heading-visitor-name" matLine>
+                    {{ item.ProviderName}}
+                    <span style="padding-left: 2em">{{ item.StartTime }}</span> 
+                </h5>
+                <p matLine>
+                    {{ item.PatientFirstName }}
+                </p>
+                <p class="text-visit-reason" matLine>
+                    {{ item.ReasonForVisit }} {{ item.Status }}
+                </p>
+            </div>
+            <div fxFlex="20" fxLayoutAlign="center center">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </div>
+        </div>
+    </div>
+    </mat-card-content>
+</mat-card>

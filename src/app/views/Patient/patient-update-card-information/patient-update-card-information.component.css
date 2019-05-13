@@ -1,0 +1,15 @@
+@import '../../../../form-elements.css';
+
+.mat-icon-button,
+.mat-datepicker-toggle {
+	font-size: 2.4rem;
+	color: #939393;
+	vertical-align: middle;
+	line-height: 36px;
+}
+
+.columns {
+	max-width: 70rem;
+	margin-left: auto;
+	margin-right: auto;
+}

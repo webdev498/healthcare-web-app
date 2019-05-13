@@ -1,0 +1,65 @@
+<div class="emergency text-center">
+	*For emergency medical treatment, call <strong>9-1-1</strong>
+</div>
+<mat-card class="patient-card">
+	
+    <mat-card-title class="text-center">
+        Providers
+    </mat-card-title>
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="text-red text-center" *ngIf="error == 'true'">
+        The provider you selected is no longer available.  Please select a new provider.
+    </div>
+    <mat-card-content>
+        <div *ngIf="!isLoaded" fxLayoutAlign="center center">
+            <mat-spinner></mat-spinner>
+        </div>
+		<div *ngIf="isLoaded">
+            <mat-accordion [multi]="false">
+                <mat-list *ngFor="let specialty of specialties.Specialties">
+                    <h3 class="specialty-header">
+                        {{ specialty.Value }}
+                    </h3>
+                    <div *ngFor="let provider of providers; let i = index" [ngClass]="{ 'odd': ((i % 2) != 0) }">
+
+                        <mat-expansion-panel *ngIf="specialty.ID == provider.SpecialtyID" [disabled]="isDisabled && i != providerSelected">
+							
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <div class="provider-photo">
+                                    <img style="height: 35px; width: 35px;" [src]="provider.Photo" alt="Picture of {{ provider.Name }}">                                    &nbsp;
+									</div>
+									<div class="provider-name">
+										<h3>{{ provider.Name }}</h3>
+									</div>
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    <!--<span class="rating">{{ provider.Rating }}</span>
+                                    <p>
+                                            <span class="availability"> {{ getEnumProviderAvailability(provider.Availability) }} - </span>
+                                            <span class="status"> {{ getEnumProviderStatus(provider.Status) }} </span>
+                                    </p>-->
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <div class="text-center">
+                                <button mat-raised-button (click)="cmdChatWithPatient_click(provider.ProviderID)">
+                                    Start Visit
+                                </button>
+                            </div>
+
+							<div class="provider-details">
+								<span><strong>Title:</strong> {{ provider.Degree }}</span>
+								<span><strong>Gender:</strong> {{ provider.Gender }}</span>
+								<span><strong>Education:</strong> {{ provider.MedicalSchool }}</span>
+								<span><strong>Notes:</strong> {{ provider.Notes }}</span>
+							</div>
+							
+                        </mat-expansion-panel>
+
+                    </div>
+                </mat-list>
+            </mat-accordion>
+        </div>
+    </mat-card-content>
+</mat-card>

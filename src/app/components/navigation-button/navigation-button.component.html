@@ -1,0 +1,21 @@
+<mat-card 
+    (click)="cmdNav_click();"
+    [ngClass]="{
+        'card-navigation': !disabledButtons,
+        'card-navigation-on':buttonIsOn
+      }"
+    >
+    
+    <mat-card-content>
+        <h3>
+            <span>
+                <mat-icon class="mat-icon material-icons card-navigation-icon" role="img" aria-hidden="true">
+                    {{ icon }}
+                </mat-icon>
+                &nbsp;
+                {{ text }}
+            </span>
+            <span class="badge" *ngIf="(pendings > 0)">{{ pendings }}</span>
+        </h3>
+    </mat-card-content>
+</mat-card>

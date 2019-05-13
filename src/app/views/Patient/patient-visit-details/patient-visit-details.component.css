@@ -1,0 +1,8 @@
+.note-link {
+	cursor: pointer;
+	display: inline-block;
+	margin-bottom: .5rem;
+}
+.note-link > * {
+	vertical-align: bottom;
+}

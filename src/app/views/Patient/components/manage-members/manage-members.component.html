@@ -1,0 +1,43 @@
+
+<div fxLayoutAlign="center center" *ngIf="!isLoaded">
+	<mat-spinner></mat-spinner>
+</div>
+
+<h2 *ngIf="isLoaded" class="text-center">
+	Manage Members
+</h2>
+
+<div *ngIf="isLoaded" class="text-center">
+
+	<table style="width: 100%">
+		<thead>
+			<th>Name</th>
+			<th>Payment Plan</th>
+			<th>&nbsp;</th>
+		</thead>
+		<tbody>
+			<tr class="primary" [ngStyle]="{'background-color':getColor(patientPrimary) }">
+				<td>{{ patientPrimary.DisplayName }}</td>
+				<td>{{ patientPrimary.PaymentPlan }}</td>
+				<td>&nbsp;</td>
+			</tr>
+
+			<ng-container *ngFor="let patient of patients">
+				<!--<tr class="hover-member" *ngIf="patient?.!IsPrimary" >-->
+				<tr (click)="manageSubscription(patient)" class="hover-member" *ngIf="!patient.IsPrimary" [ngStyle]="{'color':getColor(patient) }">
+					<td>{{ patient.DisplayName }}</td>
+					<td>{{ patient.PaymentPlan }}</td>
+					<td><mat-icon>keyboard_arrow_right</mat-icon></td>
+				</tr>
+			</ng-container>
+		</tbody>
+	</table>
+
+	<div>
+		<br>
+		<button style="width: 100%" mat-stroked-button color="accent" (click)="addFamilyMember()" [disabled]="isDisableButtonAdd()">
+			Add Family Member <mat-icon>add</mat-icon>
+		</button>
+	</div>
+
+</div>

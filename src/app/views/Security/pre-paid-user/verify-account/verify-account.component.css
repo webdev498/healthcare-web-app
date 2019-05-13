@@ -1,0 +1,16 @@
+@import '../../../../../form-elements.css';
+
+.login-card {
+    width: 80%;
+	max-width: 80rem;
+}
+
+.radio-button {
+	display: block;
+	text-align: left;
+	width: 23rem;
+    margin: 1rem auto;
+}
+.radio-button > * {
+	vertical-align: middle;
+}

@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+  <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Please enter new email</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+  <p>
+    To remove the patient from the family account, you must enter their email address (this should be different from
+    the family
+    account primary email address). This allows them the opportunity to have ongoing access to their medical records
+    and removes them from your account billing.
+  </p>
+  <p>
+    If you require assistance, please call Customer Service (Mon-Fri, 8am-5pm) at <strong><a [routerLink]="">512-421-5678</a></strong>.
+  </p>
+
+  <div *ngIf="!isLoaded">
+    <mat-spinner>
+    </mat-spinner>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" *ngIf="isLoaded">
+    <mat-form-field *ngIf="isPrivate == 'true'">
+      <input type="email" matInput placeholder="{{email}}" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="newEmail" matInput placeholder="New email" [(ngModel)]="newEmail" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <div class="text-center">
+      <br>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+  </form>
+
+</mat-dialog-content>

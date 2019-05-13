@@ -1,0 +1,87 @@
+<mat-card class="patient-card">
+
+	<button mat-button color="accent" type="button" (click)="backManageMembers()">
+		<mat-icon>keyboard_arrow_left</mat-icon>
+		Manage Members
+	</button>
+
+	<mat-card-title class="text-center">
+		{{ patientName }}
+	</mat-card-title>
+
+	<mat-card-content>
+
+		<div *ngIf="showOptions">
+
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="50px" class="columns" *ngIf="!deactivated">
+				<div fxFlex="40%" fxFlexFill>
+					<button mat-raised-button type="button" (click)="cmdDeactivateFamily_click()">
+						Deactivate User
+					</button>
+				</div>
+				<div fxFlex="60%" fxFlexFill>
+					<p>Member will be able to access previous records, but may not initiate a new visit. Member becomes inactive at end
+						of billing period.</p>
+				</div>
+			</div>
+
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="50px" class="columns">
+				<div fxFlex="40%" fxFlexFill>
+					<button mat-raised-button type="button" (click)="cmdRemoveFamily_click()">
+						Remove User from Family Account
+					</button>
+				</div>
+				<div fxFlex="60%" fxFlexFill>
+					<p>Member will no longer have any access through this family account. Member is able to create a separate account.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div *ngIf="!showOptions">
+
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="50px" class="columns" *ngIf="reactivated">
+				<div fxFlex="40%" fxFlexFill>
+					<button mat-raised-button type="button" (click)="cmdReactivateFamily_click()">
+						Reactivate
+					</button>
+				</div>
+				<div fxFlex="60%" fxFlexFill>
+					<p>Member will be able to access previous records, but may not initiate a new visit. Member becomes inactive at end
+						of billing period.</p>
+				</div>
+			</div>
+
+			<div *ngIf="isPrivate != 'true'" fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="50px" class="columns">
+				<div fxFlex="40%" fxFlexFill>
+					<button mat-raised-button type="button" (click)="cmdMakePrivate_click()">
+						Make User Private
+					</button>
+				</div>
+				<div fxFlex="60%" fxFlexFill>
+					<p>Member creates a separate login to fully privatize their medical information. Member remains on this family account.</p>
+				</div>
+			</div>
+
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="50px" class="columns">
+				<div fxFlex="40%" fxFlexFill>
+					<button mat-raised-button type="button" (click)="cmdShowOptions_click()">
+						Remove User from Family Account
+					</button>
+				</div>
+				<div fxFlex="60%" fxFlexFill>
+					<p>Member will no longer have any access through this family account. Member is able to create a separate account.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div *ngIf="showError" class="text-red text-center">{{ error }}</div>
+
+		<div class="text-center">
+			<br>
+			<button mat-button color="accent" (click)="showMoreInformationDialog()">More Information</button>
+		</div>
+
+	</mat-card-content>
+</mat-card>

@@ -1,0 +1,97 @@
+<mat-card class="patient-card">
+	<div *ngIf="!isLoaded" fxLayoutAlign="center center">
+		<mat-spinner></mat-spinner>
+	</div>
+
+	<button  *ngIf="isLoaded" mat-button color="accent" type="button" (click)="manageMember()">
+		<mat-icon>keyboard_arrow_left</mat-icon>
+		Manage Members
+	</button>
+
+	<mat-card-title *ngIf="isLoaded" class="text-center">
+		Credit Card Information
+		<mat-icon (click)="showDialogBillingPolicies()">info</mat-icon>
+	</mat-card-title>
+
+    <mat-card-content *ngIf="isLoaded">
+
+		<p>
+			<strong>HSA/FSA Disclaimer:</strong> eMD Access cannot guarantee HSA/FSA eligibility or reimbursement. We do not recommend
+			using HSA/FSA cards for recurring subscription services unless you have confirmed benefits with your plan.
+		</p>
+
+		<form [formGroup]="_form" (ngSubmit)="onSubmit()">
+			<div fxLayout fxLayout.xs="column" fxLayoutGap="30px" class="columns">
+				<div fxFlex="50%">
+
+					<mat-form-field>
+						<input matInput type="text" formControlName="name_card" id="name_card" placeholder="Name as Appears on Card">
+						<mat-error *ngIf="!_form.controls['name_card'].valid && _form.controls['name_card'].touched">{{titleAlert}}</mat-error>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput [type]="hideCardNumber ? 'password' : 'number'" formControlName="card_number" (click)="showCharacters('card_number')"
+							(blur)="hideCharacters('card_number')" id="card_number" placeholder="Credit Card Number">
+						<mat-error *ngIf="!_form.controls['card_number'].valid && _form.controls['card_number'].touched">{{titleAlert}}</mat-error>
+					</mat-form-field>
+
+					<mat-form-field>
+                        <input matInput [matDatepicker]="dp" (focus)="dp.open()"  placeholder="Month and Year" [formControl]="date" formControlName="date_exp">
+						<mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)" (monthSelected)="chosenMonthHandler($event, dp)"
+                            panelClass="example-month-picker">
+                        </mat-datepicker>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput [type]="hideSecurityCode ? 'password' : 'number'" (click)="showCharacters('security_code')" (blur)="hideCharacters('security_code')"
+							formControlName="security_code" id="security_code" placeholder="Security Code">
+						<mat-error *ngIf="!_form.controls['security_code'].valid && _form.controls['security_code'].touched">{{titleAlert}}</mat-error>
+					</mat-form-field>
+					
+				</div>
+				<div fxFlex="50%">
+
+					<strong>Billing Address</strong>
+					<mat-form-field>
+						<input matInput type="text" formControlName="bill_address" id="bill_address" placeholder="Address">
+						<mat-error *ngIf="!_form.controls['bill_address'].valid && _form.controls['bill_address'].touched">{{titleAlert}}</mat-error>
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput type="text" formControlName="bill_city" id="bill_city" placeholder="City">
+						<mat-error *ngIf="!_form.controls['bill_city'].valid && _form.controls['bill_city'].touched">{{titleAlert}}</mat-error>
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput type="text" formControlName="bill_state" id="bill_state" placeholder="State">
+						<mat-error *ngIf="!_form.controls['bill_state'].valid && _form.controls['bill_state'].touched">{{titleAlert}}</mat-error>
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput type="text" formControlName="bill_zip_code" id="bill_zip_code" placeholder="Zip Code">
+						<mat-error *ngIf="!_form.controls['bill_zip_code'].valid && _form.controls['bill_zip_code'].touched">{{titleAlert}}</mat-error>
+					</mat-form-field>
+					
+				</div>
+			</div>
+			
+			<div class="text-center error" *ngIf="wrongCard">Credit card not valid. Please try again.</div>
+
+			<div class="text-center">
+				<br>
+				<button mat-raised-button color="primary" type="submit" [disabled]="!_form.valid">Save Changes</button>
+			</div>
+
+
+
+
+			<div class="text-center" *ngIf="showResultOperation">
+				<span *ngIf="resultOperation" class="text-green">{{ messageUpdateOperation }}</span>
+				<span *ngIf="!resultOperation" class="text-red">{{ messageUpdateOperation }}</span>
+			</div>
+
+
+		</form>
+
+		{{ _form.errors }}
+
+    </mat-card-content>
+</mat-card>

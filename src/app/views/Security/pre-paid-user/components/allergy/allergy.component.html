@@ -1,0 +1,24 @@
+
+  <table class="allergies-list">
+    <tr>
+      <td>{{allergy}}</td>
+      <td>
+        <button mat-icon-button>
+          <mat-icon aria-label="edit" (click)="onEdit()">create</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button mat-icon-button>
+          <mat-icon aria-label="delete" (click)="onDelete()">delete_forever</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <div *ngIf="updating">
+    <mat-form-field>
+      <input matInput placeholder="Update Allergy" [(ngModel)]="data" value="data">
+    </mat-form-field>
+    <button mat-icon-button>
+      <mat-icon aria-label="update" (click)="onUpdate()">done</mat-icon>
+    </button>
+  </div>

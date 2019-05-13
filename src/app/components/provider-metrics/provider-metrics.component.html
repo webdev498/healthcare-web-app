@@ -1,0 +1,60 @@
+<mat-card class="card-provider-metrics">
+    <mat-card-header>
+        <h4>
+            <span>
+                <mat-icon class="mat-icon material-icons card-provider-metrics-icon" role="img" aria-hidden="true">
+                    insert_chart
+                </mat-icon>
+                &nbsp; My Metrics
+            </span>
+        </h4>
+    </mat-card-header>
+    <mat-card-content style="text-align:center;">
+        Avarage Response Time For
+
+        <br>
+        <br>
+
+        <div>
+            <mat-form-field>
+                <input matInput [matDatepicker]="averageResponseStart" (focus)="averageResponseStart.open()" placeholder="Choose a date" [(ngModel)]="dtAverageResponseTimeStart"
+                    (dateChange)="averageResponseStart_closed()">
+                <mat-datepicker-toggle matSuffix [for]="averageResponseStart"></mat-datepicker-toggle>
+                <mat-datepicker #averageResponseStart></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="averageResponseEnd" (focus)="averageResponseEnd.open()" placeholder="Choose a date" [(ngModel)]="dtAverageResponseTimeEnd" (dateChange)="averageResponseEnd_closed()">
+                <mat-datepicker-toggle matSuffix [for]="averageResponseEnd"></mat-datepicker-toggle>
+                <mat-datepicker #averageResponseEnd></mat-datepicker>
+            </mat-form-field>
+
+            <h2>{{ averageResponseTime }}</h2>
+        </div>
+
+        <hr>
+
+        <br> Patient Visits
+
+        <br>
+
+        <div>
+            <mat-form-field placeholcer="choose start date">
+                <input matInput [matDatepicker]="patientVisitsStart" 
+                (focus)="patientVisitsStart.open()" placeholder="Choose a date" [(ngModel)]="dtPatientVisitsStart" (dateChange)="patientVisitsStart_closed()">
+                <mat-datepicker-toggle matSuffix [for]="patientVisitsStart"></mat-datepicker-toggle>
+                <mat-datepicker #patientVisitsStart></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field placeholcer="choose start date">
+                <input matInput [matDatepicker]="patientVisitsEnd" 
+                (focus)="patientVisitsEnd.open()" placeholder="Choose a date" [(ngModel)]="dtPatientVisitsEnd" (dateChange)="patientVisitsStart_closed()">
+                <mat-datepicker-toggle matSuffix [for]="patientVisitsEnd"></mat-datepicker-toggle>
+                <mat-datepicker #patientVisitsEnd></mat-datepicker>
+            </mat-form-field>
+
+            <h2>{{ patientVisits }}</h2>
+        </div>
+
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,16 @@
+export interface IUser{
+   Id           :number,
+   Email        :string,
+   Password     :string,
+   FirstName    :string,
+   MiddleName   :string,
+   LastName     :string,
+   DOB          :string,
+   Gender       :string,
+   Phone        :string,
+   Street1      :string,
+   Street2      :string,
+   City         :string,
+   State        :string,
+   Zip          :string,
+}

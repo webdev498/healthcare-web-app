@@ -1,0 +1,58 @@
+<mat-card class="login-card">
+  <mat-card-header fxLayoutAlign="center start">
+    <mat-card-title>
+      <b>Verify Account</b>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div fxLayoutAlign="center center">
+      <mat-spinner *ngIf="!isLoad"></mat-spinner>
+    </div>
+
+    <div *ngIf="isLoad">
+      <p>
+        Before we can reset your username/password we need to verify your account. Would you prefer to receive the verification code
+        by SMS or by email?
+      </p>
+      <form [formGroup]="_formFactors">
+
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-radio-group>
+            <mat-radio-button (change)=selectOption($event) value="phone">Text {{ phone }}</mat-radio-button>
+            <br>
+            <mat-radio-button (change)=selectOption($event) value="email">Email {{ email}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <br>
+
+        <div fxLayoutAlign="center center">
+          <button type="button" mat-raised-button color="primary" (click)="sendCode()" [(disabled)]="isDisabled">Send Code</button>
+        </div>
+
+
+        <br>
+
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field class="input-width">
+            <input matInput (keyup)="someCode($event.target.value)" type="number" max="6" min="6" 
+            placeholder="Please enter verification code" formControlName="code" required>
+          </mat-form-field>
+          <br/>
+        </div>
+
+        <div fxLayoutAlign="center center">
+          <span *ngIf="failedVerfication" style="color: red">Verification failed. Please retry or press Send Code to have a new code sent to you.</span>
+        </div>
+
+        <br/>
+        <div fxLayoutAlign="center center">
+          <button mat-raised-button color="primary" type="button" (click)="onSubmit()" [disabled]="isDisabledSubmit">Verify</button>
+        </div>
+
+      </form>
+    </div>
+
+  </mat-card-content>
+</mat-card>

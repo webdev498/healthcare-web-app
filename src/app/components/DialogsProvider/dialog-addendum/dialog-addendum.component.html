@@ -1,0 +1,34 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="cancel()" class="hoverclass">clear</mat-icon>
+</div>
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Addendum</mat-card-title>
+	</mat-card-header>
+
+	<h3>Added by {{data.DoctorName}}</h3>
+	<p>{{date | date}}</p>
+
+	<br>
+
+	<div fxLayout="column">
+		<div fxLayout="row">
+			<div fxFlex="100%" class="matcard">
+				<mat-form-field style="width: 100%">
+					<textarea maxlength="500" matInput matAutosizeMaxRows=50 matAutosize=true [(ngModel)]="diagnosis"></textarea>
+				</mat-form-field>
+			</div>
+		</div>
+
+		<div fxLayout="row" fxFill fxLayoutAlign="center center">
+			<div>
+				<button mat-raised-button (click)="cancel()">Cancel</button>
+			</div>
+			<div>
+				<button mat-raised-button color="primary" (click)="save()">Save</button>
+			</div>
+		</div>		
+
+	</div>
+
+</mat-card>

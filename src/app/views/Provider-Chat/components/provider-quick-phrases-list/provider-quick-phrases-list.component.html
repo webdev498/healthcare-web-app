@@ -1,0 +1,44 @@
+<div fxLayoutAlign="center center">
+    <mat-spinner *ngIf="!isLoad"></mat-spinner>
+</div>
+<div *ngIf="isLoad">
+    <mat-card>
+        <div fxLayout="row" fxLayoutAlign="space-between center" > 
+          <div>
+            Quick Phrases
+          </div>
+        
+          <div fxLayoutAlign="end start">
+            <mat-icon *ngIf="phraseSelected" matTooltip="Delete Phrase" (click)="deletePhrase()">delete</mat-icon>
+            <mat-icon *ngIf="phraseSelected" matTooltip="Edit a Phrase" (click)="editPhrase()">edit</mat-icon>
+            <mat-icon matTooltip="Add a Phrase" (click)="addPhrase()">add</mat-icon>
+          </div>
+        </div>  
+          <mat-list>
+              <mat-list-item class="border-div hover-provider" *ngFor="let item of phrases.QuickPhraseList" [ngStyle]="{'background-color':phraseSelected === item.Phrase ? 'lightgray' : '' }"
+                (click)="selectPhrase(item)"
+                [dndDraggable]="item.Phrase"
+                       [dndEffectAllowed]="efectallow"
+                       [dndDisableIf]="false"
+                       (dndStart)="onDragStart($event)"
+                      (dndCopied)="onDragged($event, 'copy')"
+                      (dndLinked)="onDragged($event, 'link')"
+                      (dndMoved)="onDragged($event, 'move')"
+                      (dndCanceled)="onDragged($event, 'none')"
+                      (dndEnd)="onDragEnd($event)"
+                >
+                <h4 mat-line>{{item.Phrase}}</h4>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+          </mat-list>
+        
+       
+        
+        <br>
+        <br>
+      
+        <div fxLayoutAlign="center start">
+          <button mat-raised-button (click)="addPhrase()">Insert</button>
+        </div>       
+      </mat-card>
+</div>

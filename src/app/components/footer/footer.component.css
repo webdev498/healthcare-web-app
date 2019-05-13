@@ -1,0 +1,22 @@
+.footer-toolbar
+{   position: absolute;
+    bottom: 0px;
+    max-height:40px;
+}
+
+.toolbar-spacer
+{
+    flex: 1 1 auto;
+}
+
+.copyright
+{
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+.footer-logo
+{
+    width:70px;
+    margin-top:7px;
+}

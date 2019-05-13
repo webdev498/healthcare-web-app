@@ -1,0 +1,39 @@
+<mat-card class="login-card">
+
+    <mat-card-title class="text-center">Please Log In</mat-card-title>
+
+    <mat-card-content class="text-center">
+
+            <form [formGroup]="_authForm" (ngSubmit)="cmdLogin_click()" novalidate>
+
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="username" (change)="changeState()">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" (change)="changeState()">
+                    <mat-icon matSuffix style="cursor:pointer;" matTooltip="View password" (click)="hide = !hide">{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+                </mat-form-field>
+
+				<a routerLink="/security/forgot-password/forgot-password">Forgot Password?</a>
+				
+				<br />
+
+                <!-- Password Validation -->
+                <div *ngIf="(_passwordError)" class="error">
+					<br />
+					<label>Information incorrect. Please review and try again. Tap icon for further details. <mat-icon class="icohover" (click)="showFailInfo()">info</mat-icon></label>
+                </div>
+
+                <a *ngIf="(_showForgotPassword)" href="javascript:void(0);" class="forgot-password-button">Forgot Password?</a>
+				
+				<br />
+
+				<button mat-raised-button type="submit" [disabled]="!_authForm.valid">Login</button>
+				<button mat-raised-button type="button" (click)="cmdCreateUser_click()">New User Registration</button>
+
+            </form>
+
+    </mat-card-content>
+
+</mat-card>

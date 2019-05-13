@@ -1,0 +1,9 @@
+.hover-close:hover{
+    cursor: pointer;  
+  }
+
+.family-checkbox {
+	text-align: left;
+	max-width: 35rem;
+	margin: .5rem auto;
+}

@@ -1,0 +1,8 @@
+@import 'src/assets/scss/colors-fonts';
+
+.navigation-header {
+    padding: 0 20px;
+    color: $white-color;
+    background-color: $navigation-bg-color;
+    box-shadow: 0 0 10px 0 $box-shadow-light-color;
+}

@@ -1,0 +1,41 @@
+@import 'src/assets/scss/colors-fonts';
+
+h3
+{
+    color: $text-gray-color;
+}
+
+.card-navigation-icon
+{
+   display:inline-block;
+   vertical-align:middle;
+   margin-top:-3px;
+}
+
+.border-div.hover-provider{
+    border-width:2px;  
+    border-style:solid;
+    padding: 2rem;
+    box-shadow: 0 0 10px 0 $box-shadow-light-color;
+    border: none;
+    margin-bottom: 2rem;
+    width: 100%;
+    
+    &:hover{
+        cursor: pointer;
+        color: $white-color;
+        background-color: $hover-bg-color;
+
+        h5 {
+            color: $white-color;
+        }
+    }
+
+    .heading-visitor-name {
+        margin: 0;
+    }
+
+    .text-visit-reason {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,12 @@
+@import '../../../../form-elements.css';
+
+.hover-close:hover {
+    cursor: pointer;  
+  }
+
+.mat-form-field {
+	max-width: 60rem;
+}
+textarea.mat-input-element {
+	height: 10rem;
+}

@@ -1,0 +1,92 @@
+<div *ngIf="isLoad">
+<mat-card>
+	<mat-card-content>
+		<h3>{{ visit.ProviderName }}</h3>
+		<b>Start:</b> {{ visit.StartTime }}
+		<br>
+		<b>End:</b> {{ visit.EndTime }}
+		<br>
+
+
+		<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="100px">
+			<div>
+				<b>{{ visit.PatientFirstName }}</b>
+			</div>
+			<div> <b>{{visit.DOB}}</b></div>
+		</div>
+
+		<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="100px">
+			<div>
+				<b>P/G:</b>  </div>
+			<div> {{visit.Status}}</div>
+			<div> {{ visit.ProviderName }}</div>
+		</div>
+
+		<br>
+
+		<b>Reason for visit:</b> {{visit.ReasonForVisit}}
+		<br>
+		<b>Primary Diagnosis:</b> {{ visit.PrimaryDiagnosis}}
+
+		<br>
+		<mat-divider></mat-divider>
+		<br>
+		<form [formGroup]="form" (ngSubmit)="submitInfo()" novalidate>
+			<div fxLayout="row" fxLayoutAlign="space-between center">
+				<div>
+					<h4>Primary Diagnosis</h4>
+					<mat-form-field>
+						<mat-select formControlName="pDiagnosis" placeholder="Type to Specify a Diagnosis" [(value)]="selectedValueP">
+							<mat-option *ngFor="let item of issues" [value]="item.ID">
+								{{item.Value}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+
+				<div>
+					<h4>Secondary Diagnosis</h4>
+					<mat-form-field>
+						<mat-select formControlName="sDiagnosis" placeholder="Type to Specify a Diagnosis" [(value)]="selectedValueS">
+							<mat-option *ngFor="let item of issues" [value]="item.ID">
+								{{item.Value}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+
+
+			<mat-form-field class="example-full-width">
+				<label>
+					<b>Encounter Notes</b>
+				</label>
+				<br>
+				<br>
+				<textarea formControlName="notes" maxlength="250" matInput matTextareaAutosize matAutosizeMinRows=10>
+					{{visit.EncounterNotes}}</textarea>
+			</mat-form-field>
+
+
+			<br>
+			<mat-divider></mat-divider>
+			<br>
+
+			<h3>Visit Transcript</h3>
+
+			<div> {{visit.Transcript}} </div>
+
+
+			<div fxLayoutAlign="center start">
+				<b>Visit Ended {{visit.EndTime}}</b>
+			</div>
+			<mat-card-actions fxLayoutAlign="center start">
+				<button mat-raised-button type="submit" [disabled] ="!form.valid">Submit</button>
+			</mat-card-actions>
+		</form>
+		
+	</mat-card-content>
+
+	
+</mat-card>
+</div>

@@ -1,0 +1,55 @@
+// Variables (for future white-labeling)
+// @import 'src/assets/scss/colors-fonts';
+
+// General Color
+$white-color: #ffffff;
+//$red-color: #CF1B00;
+$red-color: #f45a00;
+$orange-color: #f78c26;
+$green-color: #89C742;
+$medium-green-color: #0d755a;
+
+$body-bgr-color: #eeeeee;
+
+$default-font-stack: "museo-sans", Calibri, Arial, Helvetica, sans-serif;
+$default-font-color: #333333;
+$default-font-weight: 500;
+$default-font-size: 1.6rem;
+
+$heading-font-stack: "museo-slab", Rockwell, Georgia, Times, "Times New Roman", serif;
+$heading-font-color: #3d8fcd;
+$heading-font-weight: 500;
+
+$text-link-color: #14b38a;
+$text-link-hover-color: $medium-green-color;
+
+$button-link-color: #14b38a;
+$button-link-hover-color: #14b38a;
+
+$header-border-color: #14b38a;
+
+
+// Box Hover BG color
+$hover-bg-color: #3d8fcdc2;
+
+// Text
+$text-gray-color: #555;
+
+// Box Shadow
+$box-shadow-color: #333;
+$box-shadow-light-color: #00000033;
+
+// Badge
+$badge-bg-color: $red-color;
+
+// Tab
+$tab-bg-color: $orange-color;
+$tab-text-color: $white-color;
+$tab-hover-color: $white-color;
+
+// Left Navigation 
+$navigation-bg-color: #3d8fcd;
+$navigation-card-bg-color: rgba(73, 76, 167, 0.3);
+
+
+

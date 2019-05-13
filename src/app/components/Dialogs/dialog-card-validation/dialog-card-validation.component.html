@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+	<h2 mat-dialog-title class="dialog-title text-center">Account Registration</h2>
+
+  <mat-dialog-content class="dialog-content text-center">
+
+      
+        <p>Confirm purchase of
+          <strong>{{data.paymentPlan.Name}}</strong>
+        </p>
+
+	</mat-dialog-content>
+	<mat-dialog-actions fxLayoutAlign="center center">
+          <button mat-raised-button color="primary" (click)="confirmRegistration()">Confirm</button>
+          <button mat-raised-button (click)="closeDialog()">Cancel</button>
+	</mat-dialog-actions>

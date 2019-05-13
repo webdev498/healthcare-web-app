@@ -1,0 +1,220 @@
+
+<div fxLayoutAlign="center center">
+    <mat-spinner *ngIf="!isLoad"></mat-spinner>
+</div>
+<div *ngIf="isLoad">
+    <div fxLayout="row" fxLayoutGap="20px" style="margin: 20px">
+    
+        <div fxFlex="30%">
+            <mat-card>
+                <table>
+                    <tr>
+                        <td>
+                            {{patient.PatientFirstName}}
+                        </td>
+                        <td>
+                            <span>{{patient.StartTime}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Parent/Guardian: {{patient.Guardian}}</span>
+                        </td>
+                        <td>
+      
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Established</span>
+                        </td>
+                        <td>
+                            <span>Vista 360</span>
+                        </td>
+                    </tr>
+                </table>
+      
+            </mat-card>            
+            <mat-card>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="/assets/images/estetoscopio.png" alt="">
+                        </td>
+                        <td>
+                            <p>Reason for visit: {{patient.ReasonForVisit}}</p>
+                        </td>
+                    </tr>
+                </table>
+            </mat-card>            
+            <mat-card>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>Medical History </span>
+                            </mat-panel-title>
+      
+                        </mat-expansion-panel-header>
+                        <mat-panel-description>
+                            <mat-accordion >
+                                <mat-expansion-panel *ngFor="let item of medicalIssueList " [disabled]="isDisabledMH">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <span>  {{item.Value}} </span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <mat-panel-description>
+
+                                    </mat-panel-description>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-panel-description>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>Medication </span>
+                            </mat-panel-title>
+      
+                        </mat-expansion-panel-header>
+                        <mat-panel-description>
+                            <mat-accordion >
+                                <mat-expansion-panel *ngFor="let item of medicalH.Medications ">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <span>  {{item.Name}} </span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        Note: {{item.Description}}
+                                    </mat-panel-description>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                          
+                      </mat-panel-description>           
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>Allergies </span>
+                            </mat-panel-title>
+      
+                        </mat-expansion-panel-header>
+                        <mat-panel-description>
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let item of medicalH.Allergies">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <span>  {{item.Name}} </span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        Note: {{item.Description}}
+                                    </mat-panel-description>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-panel-description>           
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>Surgeries </span>
+                            </mat-panel-title>
+      
+                        </mat-expansion-panel-header>
+                        <mat-panel-description>
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let item of medicalH.Surgeries">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <span>  {{item.Name}} </span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <mat-panel-description>
+                                        Note: {{item.Description}}
+                                    </mat-panel-description>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-panel-description>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>Primary Care Provider </span>
+                            </mat-panel-title>
+      
+                        </mat-expansion-panel-header>
+                        <mat-panel-description>
+                            {{medicalH.PCP.DisplayName}} <br>
+                            {{medicalH.PCP.Address1}} <br>
+                            {{medicalH.PCP.Address2}} <br>
+                            {{medicalH.PCP.City}} {{medicalH.PCP.State}} <br>
+                            {{medicalH.PCP.Phone}}
+                        </mat-panel-description>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>Patient Contact Information </span>
+                            </mat-panel-title>
+      
+                        </mat-expansion-panel-header>
+                        <mat-panel-description *ngIf="patientProfile!=null">
+                            {{patientProfile.Address1}} <br>
+                            {{patientProfile.City}} {{patientProfile.State}} {{patientProfile.Zip}} <br>
+                            {{patientProfile.PrimaryPhone}} <br>
+                            {{patientProfile.Email}}
+                        </mat-panel-description>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>Visit History </span>
+                            </mat-panel-title>
+                                </mat-expansion-panel-header>  
+                                <mat-panel-description>
+                                    <mat-accordion>
+                                        <mat-expansion-panel *ngFor="let visit of patientVisits">
+                                            <mat-expansion-panel-header>
+                                              <mat-panel-title>
+                                                  <span>  {{visit.StartTime}} </span>
+                                              </mat-panel-title>                    
+                                            </mat-expansion-panel-header>
+                                            <mat-panel-description>
+                                                {{visit.ProviderName}} <br>
+                                                <br>
+                                                ...................... <br>
+                                                {{visit.PatientDisplayName}}<br>
+                                                Visit Started: {{visit.StartTime}} <br>
+                                                Visit Ended:   {{visit.StartTime}}<br>
+                                                Reazon for Visit: {{visit.ReasonForVisit}} <br>
+                                                <br>
+                                                Referred To: {{visit.ProviderName}} <br>
+                                                
+                                            </mat-panel-description>  
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </mat-panel-description>           
+                              </mat-expansion-panel>               
+              </mat-accordion>
+            </mat-card>      
+        </div>    
+        <div fxFlex="50%" *ngIf="!endvisit">
+                        
+            <mat-card>
+                <app-provider-visit-summary [patient]='patient'></app-provider-visit-summary>               
+                <br>
+                <app-provider-chat-patient [patient]='patient' (endvisit) = "Endvisit($event)"></app-provider-chat-patient>
+                
+            </mat-card>      
+        </div>
+        <div fxFlex *ngIf="!endvisit">
+            <app-provider-document-library></app-provider-document-library>
+            <app-provider-quick-phrases-list></app-provider-quick-phrases-list>
+        </div>
+        <div fxFlex *ngIf="endvisit">
+            <app-provider-end-visit-container [patient]='patient' (closeTab) = "CloseTab($event)" (changeVisitId)="ChangeVisitId($event)"></app-provider-end-visit-container>
+        </div>
+      </div>
+    </div>

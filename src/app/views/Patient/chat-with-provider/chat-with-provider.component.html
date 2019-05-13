@@ -1,0 +1,32 @@
+<mat-card class="patient-card">
+    <div fxLayoutAlign="center center">
+        <mat-spinner *ngIf="!isLoaded"></mat-spinner>
+    </div>
+
+    <mat-card-title *ngIf="isLoaded" class="text-center">
+        Visit with {{ providerName }}
+    </mat-card-title>
+
+    <mat-card-content *ngIf="isLoaded">
+        <div>
+            <input type="hidden" id="txtFirstName" value="{{ firstname }}">
+            <input type="hidden" id="txtLastName" value="{{ lastname }}">
+            <input type="hidden" id="txtVisitID" value="{{ visitID }}">
+            <input type="hidden" id="providerID" value="{{ providerId }}">
+            <input type="hidden" id="txtReasonForVisit" value="{{ reasonsForVisit }}">
+        </div>
+
+        <div class="iframe-container">
+            <iframe id="iframe_chatui" src="" class="chatiframe"></iframe>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary" id="endVisitbuttonPatient" (click)="endSession()">END VISIT</button>
+        <button class="hideButton" id="execAction" (click)="postVisit()"></button>
+        <!--<button mat-button color="accent"  (click)="imgFileInput.click()">ATTACH</button>
+        <input hidden type="file" #imgFileInput (change)="cmdSendAttachment_click($event)"/>
+        <button mat-button color="primary" (click)="cmdSendMessage_click()">SEND</button>-->
+    </mat-card-actions>
+
+</mat-card>

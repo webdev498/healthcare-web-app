@@ -1,0 +1,6 @@
+@import '../../../../../form-elements.css';
+
+.login-card {
+    width: 80%;
+	max-width: 80rem;
+}

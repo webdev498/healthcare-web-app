@@ -1,0 +1,40 @@
+@import 'src/assets/scss/colors-fonts.scss';
+
+.family-member {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	margin: 0 0 1rem 0;
+    cursor: pointer;
+	border: 1px solid #ccc;
+	color: $text-link-color;
+}
+.family-member:hover {
+    cursor: pointer;
+	background: #f5f5f5;
+}
+.family-member.deactivated {
+    color: #aaa;
+}
+.family-member h4 {
+	margin: 0;
+	color: inherit;
+}
+.family-member h4 .mat-icon {
+	font-size: 4rem;
+	height: 4rem;
+	width: 4rem;
+	margin-right: .5rem;
+	color: inherit;
+}
+.family-member .mat-icon {
+	vertical-align: middle;
+	color: inherit;
+}
+.family-member .mat-icon.arrow {
+	font-size: 4rem;
+	height: 4rem;
+	width: 3.2rem;
+}

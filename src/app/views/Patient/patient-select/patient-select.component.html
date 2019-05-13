@@ -1,0 +1,48 @@
+<mat-card class="patient-card">
+
+	<mat-card-title class="text-center">
+		Select Patient
+    </mat-card-title>
+
+    <mat-card-content class="text-center">
+	
+        <div *ngIf="!isLoaded" fxLayoutAlign="center start">
+            <mat-spinner></mat-spinner>
+        </div>
+		
+		<div *ngIf="isLoaded">
+			<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+				<mat-form-field>
+				    <mat-select placeholder="This visit is for:" formControlName="patient">
+				        <mat-option *ngFor="let p of patients;" [value]="p.PatientID" (click)="selectPatient(p.PatientID)">
+				            {{ p.FirstName }} {{ p.LastName }}
+				        </mat-option>
+				    </mat-select>
+				</mat-form-field>
+            
+				<mat-form-field>
+				    <mat-select placeholder="Adult assisting with visit" formControlName="adult">
+				        <!--<mat-option [value]="-1"> None </mat-option>-->
+				        <mat-option *ngFor="let p1 of adults" [value]="p1.PatientID">
+				            {{ p1.FirstName }} {{ p1.LastName }}
+				        </mat-option>
+				    </mat-select>
+				</mat-form-field>
+            
+                <h4>Family Account Notice:</h4>
+                <p>All medical information on family accounts is viewable by other family members. Members may create a private personal account within a family subscription plan by clicking the “Family" icon below and selecting "Make User Private."</p>
+            
+				<mat-checkbox formControlName="read" (change)="ChangeButton_click($event.checked)">I have read this and understood</mat-checkbox>
+				
+				<div>
+					<br>
+		            <button mat-raised-button type="submit" [disabled]="form.invalid">Continue</button>
+				</div>
+
+			</form>
+		</div>
+
+    </mat-card-content>
+	
+</mat-card>

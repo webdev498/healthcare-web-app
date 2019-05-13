@@ -1,0 +1,36 @@
+@import 'src/assets/scss/colors-fonts';
+
+.chat-container {
+  .button-chat {
+    display: flex;
+    align-items: center;
+
+    .chat-icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+.StatusBar {
+  height: 30px;
+  align-content: center;
+  text-align: center;
+  background-color: lightgray;
+  margin-top: 20px;
+}
+
+.chat-ui-container {
+  .hideButton{    
+    visibility: hidden;
+  }
+
+  .chatiframe {
+    display: block;
+    height: 600px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: relative;
+  }
+}

@@ -1,0 +1,64 @@
+<mat-card class="provider-card">
+    <mat-card-title>
+    </mat-card-title>
+    <mat-card-content>
+    <div fxLayoutAlign="center center">
+            <mat-spinner *ngIf="!isLoad"></mat-spinner>
+    </div>
+	<div *ngIf="isLoad">
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" fxFlexFill>
+            <div fxLayout="row wrap" fx fxLayoutGap="25px">
+                <div>
+                    <mat-form-field>
+                        <mat-icon matPrefix>search</mat-icon>
+                        <input type="text" matInput placeholder="Enter First and Last Name" (keyup)="filterData($event)" oncopy="return false" onpaste="return false" [(ngModel)] = "filterByName">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Filter from" [(ngModel)]='from'>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="pickerTo" (focus)="pickerTo.open()" placeholder="Filter to" [(ngModel)]='to'>
+                        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerTo></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" (click)="filterDate()">Filter</button>
+                </div>
+            </div>
+
+            <br>
+
+
+            <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" fxFlexFill>
+                <div class="border-div hover-provider" *ngFor="let item of dataSource" (click)="showVisitDatails_click(item.VisitID)">
+                    <div fxFlex="80">
+                        <h5 class="heading-visitor-name" matLine>
+                            {{ item.ProviderName}}
+                            <span style="padding-left: 2em">{{ item.StartTime }}</span> 
+                        </h5>
+                        <p matLine>
+                            {{ item.PatientFirstName }}
+                        </p>
+                        <p class="text-visit-reason" matLine>
+                            {{ item.ReasonForVisit }} {{ item.Status }}
+                        </p>
+                    </div>
+                    <div fxFlex="20" fxLayoutAlign="center center">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </mat-card-content>
+</mat-card>

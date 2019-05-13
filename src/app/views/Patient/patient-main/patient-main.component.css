@@ -1,0 +1,12 @@
+.notice {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 4rem;
+    text-align: center;
+	background-color: #eee;
+	border-radius: .5rem;
+}
+
+.mat-raised-button {
+	min-width: 12rem !important;
+}

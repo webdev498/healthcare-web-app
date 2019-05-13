@@ -1,0 +1,41 @@
+<mat-card class="patient-card">
+
+	<mat-card-title class="text-center">
+		<!--<mat-icon class="mat-icon material-icons card-navigation-icon" role="img" aria-hidden="true"></mat-icon> &nbsp; -->
+		Reasons for Visit
+	</mat-card-title>
+	
+    <mat-card-content class="text-center">
+
+        <div *ngIf="!isLoaded" fxLayoutAlign="center center">
+            <mat-spinner></mat-spinner>
+        </div>
+		
+        <div *ngIf="isLoaded">
+			<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+			
+				<div class="reasons-list">
+	                <div *ngFor="let reason of reasons; let i = index">
+	                    <mat-checkbox formControlName="check" value="{{reason.ID}}" (change)="changeButton_click($event)">{{ reason.Value }}</mat-checkbox>
+					</div>
+					<div>
+						<mat-checkbox (change)="enableOther($event)">Other</mat-checkbox>
+					</div>
+				</div>
+				
+				<br>
+
+                <mat-form-field>
+                    <input matInput formControlName="other" (input)="onChangeOther($event.target.value)" placeholder="Write other reason for visit.">
+                </mat-form-field>
+				
+	            <div class="text-center">
+	            	<br>
+	                <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Start Visit</button>
+	            </div>
+
+        	</form>
+        </div>
+		
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Add Surgery</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+  <mat-form-field>
+    <input matInput [(ngModel)]="surgeryName" placeholder="Surgery name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea maxlength="250" matInput [(ngModel)]="surgeryDesc" placeholder="Please include information about surgery type, organ, or part of body and date."></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+  <button class="mat-raised-button mat-primary" (click)="saveSurgery()">Save</button>
+</mat-dialog-actions>

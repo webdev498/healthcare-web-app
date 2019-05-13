@@ -1,0 +1,479 @@
+@import '../node_modules/@angular/material/theming';
+// Plus imports for other components in your app.
+@import 'assets/scss/colors-fonts.scss';
+
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$emd-typography: mat-typography-config(
+  $font-family: $default-font-stack
+);
+
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+// @include mat-base-typography($emd-heading-typography);
+
+// Override typography for a specific Angular Material components.
+// @include mat-checkbox-typography($emd-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+// @include angular-material-typography($emd-typography);
+
+
+// Include the common styles for Angular Material.
+// We include this here so that you only have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core($emd-typography);
+
+// Custom Color Palettes (made using http://mcg.mbitson.com)
+$emd-blue: (
+    50 : #e8f2f9,
+    100 : #c5ddf0,
+    200 : #9ec7e6,
+    300 : #77b1dc,
+    400 : #5aa0d5,
+    500 : #3d8fcd,
+    600 : #3787c8,
+    700 : #2f7cc1,
+    800 : #2772ba,
+    900 : #1a60ae,
+    A100 : #e4f0ff,
+    A200 : #b1d3ff,
+    A400 : #7eb7ff,
+    A700 : #64a8ff,
+    contrast: (
+        50 : #333333,
+        100 : #333333,
+        200 : #333333,
+        300 : #333333,
+        400 : #333333,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #333333,
+        A200 : #333333,
+        A400 : #333333,
+        A700 : #333333,
+    )
+);
+$emd-green: (
+    50 : #e3f6f1,
+    100 : #b9e8dc,
+    200 : #8ad9c5,
+    300 : #5bcaad,
+    400 : #37be9c,
+    500 : #14b38a,
+    600 : #12ac82,
+    700 : #0ea377,
+    800 : #0b9a6d,
+    900 : #068b5a,
+    A100 : #b8ffe2,
+    A200 : #85ffcd,
+    A400 : #52ffb8,
+    A700 : #38ffad,
+    contrast: (
+        50 : #333333,
+        100 : #333333,
+        200 : #333333,
+        300 : #333333,
+        400 : #333333,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #333333,
+        A200 : #333333,
+        A400 : #333333,
+        A700 : #333333,
+    )
+);
+$emd-orange: (
+    50 : #feebe0,
+    100 : #fcceb3,
+    200 : #faad80,
+    300 : #f78c4d,
+    400 : #f67326,
+    500 : #f45a00,
+    600 : #f35200,
+    700 : #f14800,
+    800 : #ef3f00,
+    900 : #ec2e00,
+    A100 : #ffffff,
+    A200 : #ffe4e0,
+    A400 : #ffb8ad,
+    A700 : #ffa193,
+    contrast: (
+        50 : #333333,
+        100 : #333333,
+        200 : #333333,
+        300 : #333333,
+        400 : #333333,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #333333,
+        A200 : #333333,
+        A400 : #333333,
+        A700 : #333333,
+    )
+);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss (imported above). 
+// For each palette, you can optionally specify a default, lighter, and darker hue. 
+// Available color palettes: https://material.io/design/color/
+$emd-palette-primary: mat-palette($emd-blue);
+$emd-palette-accent: mat-palette($emd-green);
+
+// The warn palette is optional (defaults to red).
+$emd-palette-warn: mat-palette($emd-orange);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$emd-access-theme: mat-light-theme($emd-palette-primary, $emd-palette-accent, $emd-palette-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component that you are using.
+@include angular-material-theme($emd-access-theme);
+
+// ------------------ SITE-WIDE STYLES -------------------------
+
+
+// Generic
+html {
+	font-size: 10px;
+}
+
+body {
+	margin: 0 !important;
+	font-size: $default-font-size;
+	line-height: 150%;
+	color: $default-font-color;
+	font-family: $default-font-stack;
+	font-weight: $default-font-weight;
+	background: $body-bgr-color;
+}
+
+html, body {
+	height: 100%;
+}
+
+a {
+	color: $text-link-color;
+	text-decoration: none;
+	transition: all .33s;
+
+	&:hover {
+		color: $text-link-hover-color;
+		text-decoration: none;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: $heading-font-color;
+	font-family: $heading-font-stack;
+	font-weight: $heading-font-weight;
+}
+h1 {
+	font-size: 3.6rem;
+	line-height: 1.222em; // 44/36px
+}
+h2 {
+	font-size: 3rem;
+	line-height: 1.266em; // 38/30px	
+}
+h3 {
+	font-size: 2.4rem;
+	line-height: 1.333em; // 32/24px	
+}
+h4 {
+	font-size: 2rem;
+	line-height: 1.4em; // 28/20px	
+}
+h5 {
+	font-size: 1.8rem;
+	line-height: 1.444em; // 26/18px	
+}
+h6 {
+	font-size: $default-font-size;
+	line-height: 150%;
+}
+
+
+// HEADER
+
+.site-header {
+	position: relative;
+	z-index: 99;
+	margin: 0;
+	padding: 2rem 0;
+	background: #fff;
+	-webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	height: unset !important;
+	border-top: 0.5rem solid $header-border-color;
+	
+	.mat-toolbar {
+		display: block;
+		width: 100%;
+		//max-width: 120rem;
+		height: auto;
+		margin: 0 auto;
+		padding: 0 5%;
+		color: #333;
+		font-size: 1em;
+		line-height: 1em;
+		background: transparent;
+		white-space: normal; 
+
+		.logo {
+			display: block;
+			margin: 0 auto;
+
+			img {
+				display: block;
+				max-height: 7rem;
+				max-width: 40rem;
+				margin: 0 auto;
+				
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			
+			.tagline {
+				display: block;
+				margin-top: 1rem;
+				font-family: $heading-font-stack;
+				font-size: 1em;
+				line-height: 112.5%; // 18/16px
+				text-align: center; 
+			}
+		}
+		
+		.options {
+			text-align: center;
+			
+			.mat-form-field {
+				width: 100%;
+				margin-bottom: -2rem;
+			}
+		
+			> div:last-child {
+				margin: 0 -1rem -1rem 0; //to negate margin on .mat-raised-button
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 780px) {
+	
+	.site-header {
+		
+		.mat-toolbar {
+			padding: 0 2.5%;
+		
+			.logo {
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: flex-start;
+				align-items: flex-end;
+				margin: 0;
+				
+				img {
+					margin: 0;
+				}
+				
+				.tagline {
+					margin: 0 0 0 2rem;
+					text-align: left; 
+				}
+			}
+
+			.options {
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: flex-start;
+				align-items: flex-end;
+			
+				.mat-form-field {
+					width: auto;
+					padding-right: 2rem;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	
+	.site-header {
+		padding: 3rem;
+
+		.mat-toolbar {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			align-items: flex-end;
+			padding: 0; 
+			
+			.logo {
+				.tagline {
+					max-width: 18rem;
+				}
+			}
+			
+			.options {
+				justify-content: flex-end;
+			}
+		}
+	}
+}
+
+// CONTENT
+
+.mat-card {
+	margin: 4rem auto;
+	padding: 3rem;
+	font-family: $default-font-stack;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	
+	&.provider-card,	
+	&.patient-card {
+		margin: 0;
+		box-shadow: none !important;
+		padding: 4rem !important;
+	}
+}
+.mat-card-subtitle,
+.mat-card-content, 
+.mat-card-header .mat-card-title {
+	font-size: inherit;
+}
+.mat-card-title {
+	color: $heading-font-color;
+	font-family: $heading-font-stack;
+	font-weight: $heading-font-weight;
+	font-size: 3rem;
+	line-height: 1.266em; // 38/30px	
+}
+.mat-card-title:empty { display: none; }
+.mat-card-subtitle {
+	color: $heading-font-color;
+	font-family: $heading-font-stack;
+	font-weight: $heading-font-weight;
+	font-size: 2.4rem;
+	line-height: 1.333em; // 32/24px
+}
+
+.mat-dialog-container {
+	padding: 3rem;
+}
+.mat-dialog-title {
+	color: $heading-font-color;
+	font-family: $heading-font-stack;
+	font-weight: $heading-font-weight;
+	font-size: 3rem;
+	line-height: 1.266em; // 38/30px
+}
+.mat-dialog-content {
+	padding: 3rem 0;
+	margin: -3rem 0;
+}
+
+.text-center {
+	text-align: center
+}
+.text-red,
+.error {
+	color: $red-color;
+}
+.text-green {
+	color: $green-color;
+}
+
+// buttons (everything is !important because the material theme REALLY wants to override...)
+
+.mat-button,
+.mat-stroked-button {
+	font-size: inherit !important;
+}
+
+.mat-raised-button {
+    display: inline-block !important;
+	width: auto !important;
+	padding: 1rem 2rem !important;
+	margin: 1rem !important;
+    color: #fff !important;
+	text-align: center !important;
+    font-family: $heading-font-stack !important;
+    font-size: 1em !important;
+    line-height: 1.25em !important; // 20/16px
+    background: $button-link-color !important;
+    border: 0 none !important;
+	border-radius: .5rem !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
+	transition: all .33s !important;
+
+	.mat-button-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+.mat-raised-button:hover {
+	color: #fff !important;
+	background: $button-link-hover-color !important;
+}
+.mat-raised-button.cta-button {
+	background: $cta-button-link-color !important;
+}
+.mat-raised-button.cta-button:hover {
+	background: $cta-button-link-hover-color !important;
+}
+.mat-raised-button:disabled,
+.mat-raised-button:disabled:hover {
+	background: #ddd !important;
+	pointer-events: none !important;
+    cursor: default !important;
+}
+
+// Tabs
+
+.mat-tab-group {
+	.mat-tab-header {
+		.mat-tab-label-container {
+			background-color: $tab-bg-color;
+
+			.mat-tab-list {
+				.mat-ink-bar {
+					background-color: $tab-hover-color;
+				}
+
+				.mat-tab-label {
+					&.mat-tab-label-active {
+						opacity: 1;
+					}
+
+					.mat-tab-label-content {
+						color: $tab-text-color;
+						font-size: 1.286em; /*18/14px*/
+						line-height: 1em;
+					}
+				}
+			}
+		}
+	}
+
+	.mat-tab-body-wrapper {
+		padding: 2rem;
+
+		.mat-tab-body-content {
+			.mat-card {
+				margin: 0;
+			}
+		}
+	}
+}

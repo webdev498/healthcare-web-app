@@ -1,0 +1,17 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="cancel()" class="hover-close">close</mat-icon>
+</div>
+
+<div fxLayoutAlign="center start">
+    <h2 mat-dialog-title class="dialog-title">Add Pharmacy</h2>
+</div>
+
+<mat-dialog-content class="dialog-content">
+    <mat-form-field style="width: 100%;">
+        <textarea maxlength="250" [(ngModel)]="pharmacy" matInput placeholder="Please include pharmacy name and address. If address is not known, please include a minimum of nearest cross-streets."></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button class="mat-raised-button mat-primary" (click)="savePharmacy()">Save</button>
+</mat-dialog-actions>

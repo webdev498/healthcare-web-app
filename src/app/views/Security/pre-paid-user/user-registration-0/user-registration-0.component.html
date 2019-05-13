@@ -1,0 +1,39 @@
+<mat-card class="login-card">
+
+    <mat-card-title class="text-center">
+        New User Registration
+    </mat-card-title>
+
+    <mat-card-content class="text-center">
+
+		<form [formGroup]="_userRegForm0" novalidate (ngSubmit)="cmdRegisterUser0_click()">
+
+			<mat-form-field>
+				<input matInput placeholder="First Name" formControlName="firstName" required>
+				<mat-error *ngIf="!_userRegForm0.controls['firstName'].valid && _userRegForm0.controls['firstName'].touched">{{titleAlert}}</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="Last Name" formControlName="lastName" required>
+				<mat-error *ngIf="!_userRegForm0.controls['lastName'].valid && _userRegForm0.controls['lastName'].touched">{{titleAlert}}</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Date of Birth" formControlName="dateOfBirth" required>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+			
+			<br />
+
+			<span style="color: red" *ngIf="showError">{{ error }}</span>
+
+			<br>
+
+			<button mat-raised-button color="primary" type="submit" [disabled]="!_userRegForm0.valid">Register</button>
+
+		</form>
+
+    </mat-card-content>
+
+</mat-card>

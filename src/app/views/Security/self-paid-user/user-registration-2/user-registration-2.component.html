@@ -1,0 +1,127 @@
+<mat-card class="login-card">
+
+    <mat-card-title class="text-center">
+        New User Registration
+    </mat-card-title>
+    <mat-card-subtitle class="text-center">
+        Step 1 of 4
+    </mat-card-subtitle>
+
+    <mat-card-content>
+
+		<form [formGroup]="_userRegForm2" (ngSubmit)="cmdRegisterUser_click()" novalidate>
+			
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="30px" class="columns">
+				
+				<div fxFlex="50%">
+
+					<mat-form-field>
+						<input matInput placeholder="First Name" formControlName="firstName" value="{{userName}}" readonly>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Last Name" formControlName="lastName" readonly value="{{userLastName}}">
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput [matDatepicker]="picker" (focus)="picker.open()" [value]="date.value" placeholder="Date of Birth" formControlName="dateOfBirth"
+						 readonly>
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+
+					<mat-form-field>
+						<mat-select placeholder="Gender" formControlName="gender" required>
+							<mat-option *ngFor="let gender of genders" [value]="gender.value">
+								{{ gender.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Payment plan" formControlName="paymentPlan" value="{{userSelectedPaymentPlan.Name}}" readonly>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Email" formControlName="email" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Phone" formControlName="contactNumber" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Address line 1" formControlName="addressLine1" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Address line 2" formControlName="addressLine2">
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="City" formControlName="city" required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<mat-select placeholder="State" formControlName="state" required>
+							<mat-option *ngFor="let st of states" [value]="st.value">
+								{{ st.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Zip" formControlName="zip" required>
+					</mat-form-field>
+					
+				</div>
+				<div fxFlex="50%">
+
+					<div>
+						<p><label><strong>Account Password *</strong></label></p>
+						<p><label>Password must be between 6-10 characters and contain at least 1 capital letter, 1 number and 1 symbol (e.g.
+								?, !,)</label></p>
+					</div>
+
+					<mat-form-field>
+						<input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password" required>
+						<mat-icon matTooltip="View password" matSuffix style="cursor:pointer;" (click)="hide = !hide">{{ hide ? 'visibility'
+							: 'visibility_off' }}</mat-icon>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPass" matTooltip="View password" placeholder="Confirm Password"
+						 required (click)="chagePasswordError_click()">
+					</mat-form-field>
+
+					<!--<mat-checkbox matTooltip="View password" (change)="hide = !hide">Show Password</mat-checkbox>-->
+					<mat-checkbox (change)="checkTermOfUse = !checkTermOfUse">I agree to the Terms of Use</mat-checkbox>
+					<a mat-icon-button (click)="cmdTermOfUse_click()">
+						<mat-icon color="accent" aria-label="Terms of Use">info</mat-icon>
+					</a>
+
+					<!-- Password Validation -->
+					<!--<ng-flash-message></ng-flash-message>-->
+				</div>
+
+			</div>
+
+			<div class="error" *ngIf="_passwordError">Check that the passwords match and that the terms and conditions are marked</div>
+			<div class="error" *ngIf="emailError">There is already an account associated with this email.<br> Please enter a new email
+				or <a routerLink="/security/forgot-password/forgot-password">recover the password</a> for existing account.
+			</div>
+			<div *ngIf="showError" class="text-center text-red">
+				{{ error }}
+			</div>
+				
+			<div class="text-center">
+				<br/>
+                <button mat-raised-button type="button" (click)="onPrevious()">Previous</button>
+                <button mat-raised-button type="submit" [disabled]="!_userRegForm2.valid">Continue</button>
+			</div>
+	
+		</form>
+
+    </mat-card-content>
+
+</mat-card>

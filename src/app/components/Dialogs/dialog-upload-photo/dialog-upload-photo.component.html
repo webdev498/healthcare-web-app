@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Take Picture</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+
+    <label for="singleFile">Upload a file from your computer.</label>
+
+    <input mat-raised-button id="file-field" name="file-field" (change)="uploadFile($event)" type="file" accept=".png,.jpg,.jpeg">
+        
+</mat-dialog-content>
+
+<div *ngIf="error" class="text-red" fxLayoutAlign="center start">
+    There was an error. Try again.
+</div>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button mat-raised-button type="button" (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

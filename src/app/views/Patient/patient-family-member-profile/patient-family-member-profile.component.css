@@ -1,0 +1,10 @@
+.patient-card {
+  padding: 0 !important; }
+  .patient-card .mat-card-title {
+    display: none; }
+  .patient-card ::ng-deep.mat-tab-header {
+    border-bottom: 0; }
+  .patient-card ::ng-deep.mat-tab-body-wrapper {
+    padding: 0; }
+  .patient-card ::ng-deep.mat-tab-label-container {
+    background-color: #14b38a; }

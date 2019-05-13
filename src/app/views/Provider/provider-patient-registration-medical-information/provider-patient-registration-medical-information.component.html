@@ -1,0 +1,138 @@
+<mat-card class="login-card">
+	<h3 fxLayoutAlign="center start">Medical information</h3>
+	<form>
+
+
+		<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
+			<div fxFlex="50%">
+				<h4 fxLayoutAlign="center start">Medical History</h4>
+				<div *ngFor="let item of diseases">
+					<mat-checkbox>{{item.name}}</mat-checkbox>
+				</div>
+
+				<br>
+				<br>
+
+				<div>
+					<h4>Primary Care Provider</h4>
+					<br> Dr Darla Jones
+					<br>
+					<p>P: 555-444-6666 </p>
+					<p>F: 555-444-6665 </p>
+					<p>976 Rose Street </p>
+					<p> Austing, Tx 78744</p>
+					<br>
+					<p>Pharmacy:</p>
+					<p>CVS South Congress</p>
+					<p>23018 Congress Ave</p>
+					<p>Austin, TX 78704</p>
+
+				</div>
+			</div>
+
+
+
+
+
+
+			<div fxFlex="50%">
+				<div fxLayout="column">
+					<div>
+						<h4>
+							Primary Care Provider*
+						</h4>
+						<div *ngFor="let item of providersAdded">
+							{{item.title}} {{item.name }}
+							<mat-icon class="hover-provider">edit</mat-icon>
+							<mat-icon class="hover-provider" (click)="deleteProvider()">delete</mat-icon>
+
+							<br> {{item.contactNumber}}
+							<br>
+							<br> {{item.addressLine1}}
+							<br>
+
+						</div>
+						<button mat-mini-fab color="primary" (click)="openDialogPrimaryCareProvider()">
+							<mat-icon>add</mat-icon>
+						</button> Add Primary Care Provider
+					</div>
+
+					<div>
+						<h4>
+							Pharmacy
+						</h4>
+						<div *ngFor="let item of pharmacies" fxLayout="row" fxLayoutAlign="start center">
+							<div>{{item}}</div>
+							<div>
+								<mat-icon class="hover-provider">edit</mat-icon>
+								<mat-icon class="hover-provider" (click)="deletePharmacy()">delete</mat-icon>
+							</div>
+						</div>
+						<button mat-mini-fab color="primary" (click)="openDialogPharmacy()">
+							<mat-icon>add</mat-icon>
+						</button> Add Pharmacy
+					</div>
+
+					<div>
+						<h4>
+							Allergies
+						</h4>
+						<div *ngFor="let item of allergies" fxLayout="row" fxLayoutAlign="start center">
+							<div>{{item}}</div>
+							<div>
+								<mat-icon class="hover-provider">edit</mat-icon>
+								<mat-icon class="hover-provider" (click)="deleteAllergy()">delete</mat-icon>
+							</div>
+						</div>
+
+						<button mat-mini-fab color="primary" (click)="openDialogAllergy()">
+							<mat-icon>add</mat-icon>
+						</button> Add Allergy
+
+					</div>
+
+					<div>
+						<h4>
+							Medications
+						</h4>
+						<div *ngFor="let item of medications" fxLayout="row" fxLayoutAlign="start center">
+							<div>{{item}}</div>
+							<div>
+								<mat-icon class="hover-provider">edit</mat-icon>
+								<mat-icon class="hover-provider" (click)="deleteMedication()">delete</mat-icon>
+							</div>
+						</div>
+						<button mat-mini-fab color="primary" (click)="openDialogMedication()">
+							<mat-icon>add</mat-icon>
+						</button> Add Medications
+					</div>
+
+					<div>
+						<h4>
+							Surgeries
+						</h4>
+						<div *ngFor="let item of surgeries" fxLayout="row" fxLayoutAlign="start center">
+								<div>{{item}}</div>
+								<div>
+									<mat-icon class="hover-provider">edit</mat-icon>
+									<mat-icon class="hover-provider" (click)="deleteSurgery()">delete</mat-icon>
+								</div>
+							</div>
+						<button mat-mini-fab color="primary" (click)="openDialogSurgery()">
+							<mat-icon>add</mat-icon>
+						</button> Add Surgeries
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<br/>
+		<br/>
+		<br/>
+		<div fxLayoutAlign="center start">
+			<button mat-raised-button color="primary" type="button" (click)="cmdRegisterMedicalinformation_click()">Save</button>
+		</div>
+
+	</form>
+</mat-card>

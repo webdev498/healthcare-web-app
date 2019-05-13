@@ -1,0 +1,33 @@
+<div fxLayoutAlign="center center">
+        <mat-spinner *ngIf="!isLoad"></mat-spinner>
+</div>
+<div *ngIf="isLoad">
+        <mat-card>
+                <div fxLayout="column">
+                  <p>
+                    {{visitDetail.ProviderName}}
+                  </p>
+                  <p>
+                      <b>Start:</b> {{visitDetail.StartTime}}
+                  </p>
+                  <p>
+                      <b>End:</b> {{visitDetail.StartTEndTimeime}}
+                  </p>
+                  <p>
+                      {{visitDetail.PatientFirstName}}
+                  </p>
+                  <p>
+                      {{visitDetail.ReasonForVisit}}
+                  </p>
+                  <p>
+                      {{visitDetail.PrimaryDiagnosis}}
+                  </p>
+                  <p>
+                      {{visitDetail.EncounterNotes}}
+                  </p>
+                  <p>{{visitDetail.Prescription}}</p>
+                  <p>{{visitDetail.ReferredToProviderName}}</p>
+                </div>
+              </mat-card>
+</div>
+

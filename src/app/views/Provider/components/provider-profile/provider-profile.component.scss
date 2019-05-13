@@ -1,0 +1,11 @@
+
+.provider-card {
+    padding: 0 !important;
+    .mat-card-title {
+        text-align: center;
+
+        .btn-change-profile-photo {
+            font-size: 20px !important;
+        }
+    }
+}

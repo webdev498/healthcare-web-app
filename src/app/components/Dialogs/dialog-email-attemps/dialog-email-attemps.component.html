@@ -1,0 +1,16 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Error<br>Too many failed attempts</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+    <p>Please contact customer service at 512-421-5678 or try again in """set time"""</p>
+
+	<p><strong>Customer Service Hours</strong><br>
+	Monday-Friday<br>
+	8AM - 5PM CST</p>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button mat-button mat-raised-button (click)="closeDialog()">Okay</button>
+</mat-dialog-actions>

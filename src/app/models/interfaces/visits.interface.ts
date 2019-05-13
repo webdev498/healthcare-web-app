@@ -1,0 +1,15 @@
+export interface IVisits{
+    Id                  :number,
+    DoctorName          :string,
+    PatientName         :string,
+    StartDate           :string,
+    EndDate?            :string,
+    ProviderDocStatus   :string,
+    Reasons             :string[],
+    Diagnosis?          :string[],
+    Notes?              :string[],
+    ReferredTo?         :string,
+    Prescription?       :string,
+    AbsenceNotes?       :string[],
+    Completed?          :boolean,    
+}

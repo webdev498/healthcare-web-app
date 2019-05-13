@@ -1,0 +1,95 @@
+<mat-card class="login-card">
+    <div *ngIf="!isLoaded" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+    </div>
+
+	<mat-card-title *ngIf="isLoaded" class="text-center">
+		Payment Plans <a mat-icon-button (click)="showInformationPlanDialog()">
+			<mat-icon color="primary" aria-label="Billing policies">information</mat-icon>
+		</a>
+	</mat-card-title>
+	<mat-card-content *ngIf="isLoaded" class="text-center">
+
+		<form [formGroup]="_selectPaymentPlanForm" (ngSubmit)="cmdSelectPaymentPlan_click()" novalidate>
+			
+			<div fxLayout fxLayout.xs="column" fxLayoutGap="30px" class="columns">
+				
+				<div fxFlex="50%">
+
+					<mat-form-field>
+						<mat-select placeholder="Payment Plans" formControlName="plans" required>
+                        <mat-option *ngFor="let plan of plans.AvailableSubscriptions" [value]="plan.Name" (click)="select(plan)">
+	                            {{ plan.Name }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<div *ngIf="getSelectedPlan()">
+						<h4>{{ selectedPlan.Name}}</h4>
+						<p>{{ selectedPlan.PlanDescription}}</p>
+					</div>
+
+					<div *ngIf="getPlanFamily()">
+                        <p>{{ plans.AvailableSubscriptionAddOns.PlanDescription }}</p>
+						<mat-form-field>
+							<mat-select placeholder="Family Members" formControlName="membersFamily" (selectionChange)="onAddCost($event.value)">
+								<mat-option value="0">0</mat-option>
+								<mat-option value="1">1</mat-option>
+								<mat-option value="2">2</mat-option>
+								<mat-option value="3">3</mat-option>
+								<mat-option value="4">4</mat-option>
+								<mat-option value="5">5</mat-option>
+								<mat-option value="6">6</mat-option>
+								<mat-option value="7">7</mat-option>
+								<mat-option value="8">8</mat-option>
+								<mat-option value="9">9</mat-option>
+								<mat-option value="10">10</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				
+				</div>
+				<div fxFlex="50%">
+					
+					<div *ngIf="getSelectedPlan()">
+						<strong>{{ selectedPlan.Name}}:</strong>
+						<br>
+						<span class="text-red">${{ selectedPlan.Cost}}</span>
+						<br><br>
+					</div>
+
+					<mat-form-field>
+						<input matInput placeholder="Apply a promotional code" formControlName="promotionalCode" (input)="validateCode($event.target.value)">
+					</mat-form-field>
+					<div *ngIf="!codeValid">
+						<span class="error">Sorry, that promo code is not valid for this payment plan.</span>
+						<br /><br />
+					</div>
+
+					<div>
+						<strong>Subscription total:</strong>
+						<br>
+						<span class="text-red">{{ totalSubscription | currency }}</span>
+					</div>
+
+					<!--<ng-flash-message></ng-flash-message>-->
+
+				</div>
+				
+			</div>
+			
+			<br />
+			<button mat-raised-button type="submit" [disabled]="!_selectPaymentPlanForm.valid">Continue</button>
+            
+		</form>
+
+        <div>
+			Believe you have reached this payment page in error?
+			<a mat-icon-button color="accent" (click)="showDialog_click()">
+				<mat-icon color="accent" aria-label="common errors">information</mat-icon>
+			</a>
+		</div>
+
+    </mat-card-content>
+
+</mat-card>

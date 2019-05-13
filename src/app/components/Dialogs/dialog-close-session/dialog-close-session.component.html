@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+  <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+
+
+
+
+<h2 mat-dialog-title class="dialog-title text-center">Logout</h2>
+
+
+
+<mat-dialog-content class="dialog-content text-center">
+    <p>
+      Are you sure?
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button mat-raised-button (click)="closeSession()">Yes</button>
+    <button mat-raised-button (click)="closeDialog()">No</button>
+</mat-dialog-actions>

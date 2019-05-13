@@ -1,0 +1,14 @@
+.columns {
+	max-width: 60rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+.columns .mat-raised-button {
+	width: 100% !important; 
+	max-width: 100%;
+	white-space: normal;
+}
+
+.mat-button {
+	font-size: inherit;
+}

@@ -1,0 +1,113 @@
+<mat-card class="provider-chat-card">
+
+    <mat-card-title>
+        <span>
+            <table>
+                <tr>
+                    <td>
+                        <mat-icon class="mat-icon material-icons card-navigation-icon card-title-button"
+                                  role="img"
+                                  aria-hidden="true"
+                                  (click)="cmdBack_click()"
+                        >
+                                keyboard_backspace
+                        </mat-icon>
+                    </td>
+                    <td>
+                            <h4>
+                                <span style="min-width:100%;vertical-align:middle">
+
+                                    <img [src]="patientAvatar" class="title-avatar" alt="">
+
+                                </span>
+
+                            </h4>
+                    </td>
+                    <td>
+                        <span style="vertical-align:top;font-weight:bold;margin-left:10px;color:#777;">
+                            Chat with {{ patientName }}
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </span>
+    </mat-card-title>
+
+    <mat-card-content>
+
+        <div class="conversation-container" fxLayout="column-reverse" 
+        infiniteScroll
+        [infiniteScrollDistance]="scrollDistance" 
+        [infiniteScrollUpDistance]="scrollUpDistance"        
+        [infiniteScrollThrottle]="throttle"
+        [scrollWindow]="false"
+        (scrolled)="onScrollDown()"
+        (scrolledUp)="onUp()">
+
+            <div *ngFor="let message of conversation">
+
+                <!-- Outgoing Messages -->
+                <div fxLayout="column" fxLayoutAlign="start end" class="conversation-baloon" 
+                     *ngIf="getMessageDirection(message) == 'Outgoing'"
+                >
+                    <div fxFlexAlign="end" class="baloon-chat">
+                        <table *ngIf="getMessageDirection(message) == 'Outgoing'">
+                            <tr>
+                                <td class="outgoing-avatar-container">
+                                    <img class="message-list-avatar" [src]="securityService.CurrentUser.Avatar">
+                                </td>
+                                <td class="outgoing-message-container">
+                                    <div class="outgoing-message"> {{ message.Message }} </div>
+                                    <span class="outgoing-time"> {{ getStringTimeFromMilliseconds(message.createdAt) }} </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Incoming Messages -->
+                <div fxLayout="column" fxLayoutAlign="start start" class="conversation-baloon" 
+                     *ngIf="getMessageDirection(message) == 'Incoming'"
+                >
+                <div fxFlexAlign="start" class="baloon-chat">
+                    <table *ngIf="getMessageDirection(message) == 'Incoming'">
+                        <tr>
+                            <td class="outgoing-avatar-container">
+                                <img class="message-list-avatar" [src]="justUser.Avatar">
+                            </td>
+                            <td class="outgoing-message-container">
+                                <div class="outgoing-message"> {{ message.Message }} </div>
+                                <span class="outgoing-time"> {{ getStringTimeFromMilliseconds(message.createdAt) }} </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+                <div *ngIf="isTyping" class="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-textbox-container">
+            <textarea matInput
+                   matTextareaAutosize
+                   matAutosizeMinRows="2"
+                   matAutosizeMaxRows="3"
+                   class="message-textbox"
+                   [(ngModel)] = "currentMessage"
+                   maxlength="250"
+            ></textarea>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions style="text-align:right;">
+        
+        <button mat-button color="accent"  (click)="imgFileInput.click()">ATTACH</button>
+        <input hidden type="file" #imgFileInput (change)="cmdSendAttachment_click($event)"/>
+        <button mat-button color="primary" (click)="cmdSendMessage_click()">SEND</button>
+    </mat-card-actions>
+
+</mat-card>

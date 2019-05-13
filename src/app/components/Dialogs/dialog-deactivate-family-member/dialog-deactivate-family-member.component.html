@@ -1,0 +1,20 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Deactivate Family Member</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+        <p>
+          Deactivate this family member? This user's information will remain available to you, but visits will no longer be permitted.
+        </p>
+        <p>
+          This user will remain activated until the end of the billing period, at which point the new subscription cost, if applicable,
+          will be reflected on your bill.
+        </p>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center center">
+	<button mat-raised-button color="primary" (click)="confirmRegistration()">Confirm</button>
+	<button mat-raised-button (click)="closeDialog()">Cancel</button>
+</mat-dialog-actions>

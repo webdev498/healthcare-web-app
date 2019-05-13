@@ -1,0 +1,61 @@
+
+.mat-form-field {
+	font-size: inherit;
+	line-height: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+	display: block;
+    width: 100%;
+	max-width: 30rem;
+	margin: 0 auto;
+}
+
+.mat-form-field .mat-icon {
+	vertical-align: middle;
+	color: #949494;
+}
+label .mat-icon {
+	vertical-align: middle;
+}
+
+.icohover:hover{
+    cursor: pointer;
+}
+
+::ng-deep .mat-tooltip {
+	font-size: 1.2rem;
+	line-height: 133.3%; /*16/12px*/
+	padding: .5rem;
+}
+
+.mat-select {
+	font-weight: inherit;
+    font-family: inherit;
+}
+
+::ng-deep .mat-form-field-subscript-wrapper,
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+	margin-top: 0 !important; /* Keep the "field required" messages that appear from touching the label of the field below when it shifts upwards (when the field is being typed in) */
+}
+
+
+@media screen and (min-width: 600px) {
+	
+	.columns > div .mat-form-field {
+		margin: 0;
+	}
+	.columns > div {
+		text-align: left;
+	}
+	
+}
+@media screen and (max-width: 600px) {
+
+	.columns > div .mat-form-field {
+		margin: 0 auto;
+	}
+	.columns > div {
+		text-align: center;
+	}
+	
+}

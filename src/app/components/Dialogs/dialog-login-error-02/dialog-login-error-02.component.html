@@ -1,0 +1,34 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Error</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+    <p>
+        We realized an updated app on (date). In you have not yet registered on this new app, return to the log on the screen and
+        select 'New User Registration'.
+    </p>
+    <p>
+        If you have registered on our new app, you should review your information. Common errors include:
+    </p>
+
+    <ul style="text-align: left;">
+        <li>Family account is registered under a different family member (the person who recieved the "Welcome/New User" email is
+            the primary account holder).
+        </li>
+        <li>Account is registered under a different email address (if you are receiving this service through an employer, this
+            could be your work email address. If you are receiving this service through an insurance plan, this is the email
+            associated with your plan/policy. If you are subscribed to this service, confirm you are using the same email
+            address you entered at registration)
+        </li>
+        <li>Information is misspelled or missing</li>
+        <li>Name and DOB do not match the information shared by your employer and insurance plan (i.e., hyphenated last name,
+            nickname, maiden name, etc)
+        </li>
+    </ul>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button class="mat-raised-button" (click)="closeDialog()">Okay</button>
+</mat-dialog-actions>

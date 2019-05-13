@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="Close()" class="hoverclass">clear</mat-icon>
+</div>
+
+<mat-card>
+	<h1>Voice Visit Request</h1>
+	<p>
+		Start Voice Visit with {{data.Name}}
+	</p>
+	<div fxLayout="row" fxLayoutGap="5px">
+		<button mat-raised-button (click)="Save()">Ok</button>
+		<button mat-raised-button (click)="Close()">Cancel</button>
+	</div>
+</mat-card>

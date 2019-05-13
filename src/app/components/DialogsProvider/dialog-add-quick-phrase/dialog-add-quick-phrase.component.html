@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="cancel()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title>Quick Phrases</h2>
+
+<mat-dialog-content>
+	<h3>
+		Add a phrase to the resource library.
+	</h3>
+	<br>
+	<mat-dialog-content class="dialog-content">
+		<mat-form-field style="width: 100%;">
+			<textarea maxlength="250" [(ngModel)]="phrase" matInput placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+			 value="phrase">
+        </textarea>
+		</mat-form-field>
+	</mat-dialog-content>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+	<button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>

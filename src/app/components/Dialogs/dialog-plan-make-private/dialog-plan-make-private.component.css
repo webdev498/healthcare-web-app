@@ -1,0 +1,5 @@
+@import '../../../../form-elements.css';
+
+.hover-close:hover {
+    cursor: pointer;  
+  }

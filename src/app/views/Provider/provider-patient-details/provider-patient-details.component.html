@@ -1,0 +1,29 @@
+<div fxLayoutAlign="center center">
+		<mat-spinner *ngIf="!isLoad"></mat-spinner>
+</div>
+<div *ngIf="isLoad">
+    <div class="navigation-header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+            <button mat-raised-button (click)="back_click()">
+                <mat-icon>keyboard_arrow_left</mat-icon> Completed</button>
+        </div>
+        
+            
+        <div>
+            {{ visit.PatientFirstName }}
+        </div>
+    </div>
+
+    <mat-tab-group [selectedIndex]="selected">
+        <mat-tab label="Visit Summary">
+            <app-visit-summary [visitID] = visit.VisitID></app-visit-summary>
+        </mat-tab>
+        <mat-tab label="Addenda">
+            <app-addendum [visit] = visit></app-addendum> 
+        </mat-tab>
+        <mat-tab label="Absence Notes"> 
+            <app-absence-note [visitId] = visit.VisitID></app-absence-note>
+        </mat-tab>            
+    </mat-tab-group>
+
+</div>

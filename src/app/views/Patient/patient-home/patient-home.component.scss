@@ -1,0 +1,36 @@
+@import '../../../../assets/scss/colors-fonts.scss';
+
+.column-left {
+	padding: 2rem;
+	background-color: $navigation-bg-color;
+	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.column-right {
+	background-color: #fff;
+}
+
+@media screen and (min-width: 1280px) {
+
+	.main-content-container {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-items: stretch;
+		min-height: 100%;
+
+		.column-left {
+			width: 30rem;
+			flex-shrink: 0;
+			padding: 2rem;
+			background-color: $navigation-bg-color;
+			box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+			z-index: 1;
+		}
+		
+		.column-right {
+			flex: 1 1;
+			background-color: #fff;
+		}
+	}	
+	
+}

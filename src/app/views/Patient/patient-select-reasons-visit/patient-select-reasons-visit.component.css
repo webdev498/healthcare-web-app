@@ -1,0 +1,52 @@
+.mat-form-field {
+	display: block;
+	width: 100%;
+	max-width: 60rem;
+	margin: 0 auto;
+}
+textarea.mat-input-element {
+	height: 10rem;
+}
+
+.reasons-list > div {
+	margin: 1rem 0;
+	text-align: left;
+}
+
+.reasons-list .mat-checkbox ::ng-deep.mat-checkbox-layout,
+.reasons-list .mat-checkbox ::ng-deep.mat-checkbox-layout > * {
+	white-space: normal;
+	vertical-align: top;
+	align-items: flex-start;
+	justify-content: flex-start;
+	align-content: flex-start;
+	align-self: flex-start;
+}
+
+@media screen and (min-width: 780px) {
+	
+	.reasons-list {
+		width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+		align-items: flex-start;
+		align-content: flex-start;
+		margin: 0 auto;
+	}
+	.reasons-list > div {
+		width: 50%;
+	}
+	.reasons-list .mat-checkbox ::ng-deep.mat-checkbox-layout {
+		padding-right: 1.5rem;
+	}
+	
+}
+
+@media screen and (min-width: 1280px) {
+	
+	.reasons-list > div {
+		width: 33.333%;
+	}
+	
+}

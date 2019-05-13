@@ -1,0 +1,11 @@
+h3 {
+	margin-bottom: 1rem;
+}
+ul {
+	padding-left: 2.5rem;
+}
+.columns {
+	max-width: 70rem;
+	margin-left: auto;
+	margin-right: auto;
+}

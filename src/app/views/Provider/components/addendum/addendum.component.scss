@@ -1,0 +1,13 @@
+@import 'src/assets/scss/colors-fonts';
+
+.hover-member {
+  &:hover{
+    cursor: pointer;
+    background-color: $hover-bg-color;
+  }
+
+
+  .mat-cell {
+    padding: 24px;
+  }
+}

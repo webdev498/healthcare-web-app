@@ -1,0 +1,23 @@
+.mat-form-field {
+	width: 100%;
+	max-width: 30rem;
+}
+table {
+	border-collapse: collapse;
+}
+td.mat-cell {
+	padding: 2rem;
+	cursor: pointer;
+	border: none;
+	/*border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;*/
+}
+td.mat-cell h5 {
+	margin: 0;
+}
+tr.mat-row:nth-child(odd) td.mat-cell {
+	background-color: #f5f5f5;
+}
+td.mat-cell:hover {
+    background-color: #eee !important;
+}

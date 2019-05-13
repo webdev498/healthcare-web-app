@@ -1,0 +1,48 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Visit Summary</mat-card-title>
+	</mat-card-header>
+
+	<mat-card-content>
+			<div fxLayoutAlign="center center">
+					<mat-spinner *ngIf="!isLoad"></mat-spinner>
+			</div>
+		<div *ngIf="isLoad">
+			<form [formGroup]="form" (ngSubmit)="save()">
+				<div fxLayout="row" fxLayoutAlign="space-between center">		
+					<div>
+						<h4>Primary Diagnosis</h4>
+						<mat-form-field>
+							<mat-select placeholder="Type to Specify a Diagnosis" formControlName="pDiagnosis" [(value)]="selectedValueP">
+								<mat-option *ngFor="let item of issues" [value]="item.ID">
+									{{item.Value}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div>
+						<h4>Secondary Diagnosis</h4>
+						<mat-form-field>
+							<mat-select placeholder="Type to Specify a Diagnosis" formControlName="sDiagnosis" [(value)]="selectedValueS">
+								<<mat-option *ngFor="let item of issues" [value]="item.ID">
+									{{item.Value}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</div>
+				<mat-form-field class="example-full-width">
+					<label>
+						<b>Encounter Notes</b>
+					</label>
+					<br>
+					<br>
+					<textarea maxlength="250" matInput matTextareaAutosize matAutosizeMinRows=10 formControlName="notes" value="{{visit.EncounterNotes}}"></textarea>
+				</mat-form-field>
+				<br>
+				<hr>
+				<button mat-raised-button type="submit" color="primary">Save</button>
+			</form>
+		</div>
+	</mat-card-content>	
+</mat-card>

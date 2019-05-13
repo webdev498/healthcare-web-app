@@ -1,0 +1,41 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Add Pharmacy</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+    <p>Please include pharmacy name and address. If address is not known, please include a minimum of nearest cross-streets.</p>
+    <mat-form-field>
+        <input matInput [(ngModel)]="BusinessName" placeholder="Please include Business Name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="StreetAddress1" placeholder="Address">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="City" placeholder="City">
+    </mat-form-field>
+    
+    <mat-form-field class="input-width">
+        <mat-select [(ngModel)]="State" placeholder="State" required>
+            <mat-option *ngFor="let st of States" [value]="st.value">
+                {{ st.viewValue }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="ZipCode" placeholder="Zip Code">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="Description" placeholder="Description">
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button class="mat-raised-button mat-primary" (click)="savePharmacy()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,9 @@
+<app-navigation-button *ngFor="let navButton of navButtons"
+                       [nav-id]="navButton.navId"
+                       icon="{{ navButton.icon }}"
+                       text="{{ navButton.text }}"
+                       [buttonIsOn]="navButton.buttonIsOn"
+                       [pendings]="navButton.pendings"
+                       (clicked)="navigationButton_click($event)"
+>
+</app-navigation-button>

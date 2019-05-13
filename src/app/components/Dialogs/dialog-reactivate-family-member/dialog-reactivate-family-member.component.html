@@ -1,0 +1,17 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Reactivate Family Member</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+        <p>
+          This family member will be reactivated immediately. If applicable, the difference will be charged now and the new subscription 
+          cost will be reflected in your next bill.
+        </p>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+          <button mat-raised-button color="primary" (click)="confirmRegistration()">Confirm</button>
+          <button mat-raised-button (click)="closeDialog()">Cancel</button>
+</mat-dialog-actions>

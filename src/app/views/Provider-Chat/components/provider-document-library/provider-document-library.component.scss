@@ -1,0 +1,24 @@
+@import 'src/assets/scss/colors-fonts';
+
+.mat-card {
+    margin-bottom: 20px !important;
+
+    .hover-provider{
+        margin: 10px 0;
+        border-width:2px;  
+        border-style:solid;
+
+        &:hover{
+            cursor: pointer;
+            background-color: $hover-bg-color;
+
+            h4{
+                color: white;
+            }
+        }
+    }
+
+    .setbgcolor{
+        background-color: lightgray;
+    }
+}

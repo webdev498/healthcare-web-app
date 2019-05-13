@@ -1,0 +1,20 @@
+<mat-card class="patient-card">
+  <mat-card-title>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-tab-group [selectedIndex]="tabIndex" (selectedTabChange)="tabChanged($event)">
+      <mat-tab label="My Profile">
+        <app-patient-profile></app-patient-profile>
+      </mat-tab>
+
+      <mat-tab label="Manage Subscription">
+        <router-outlet></router-outlet>
+      </mat-tab>
+
+      <mat-tab label="Fine Print">
+        <app-myaccount-fine-print></app-myaccount-fine-print>
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

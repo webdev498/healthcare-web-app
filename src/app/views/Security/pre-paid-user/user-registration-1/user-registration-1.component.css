@@ -1,0 +1,17 @@
+@import '../../../../../form-elements.css';
+
+.login-card {
+    width: 80%;
+	max-width: 80rem;
+}
+
+.mat-icon-button,
+.mat-datepicker-toggle {
+	font-size: 2.4rem;
+	color: #939393;
+}
+
+.columns {
+	max-width: 63rem;
+	margin: 0 auto;
+}

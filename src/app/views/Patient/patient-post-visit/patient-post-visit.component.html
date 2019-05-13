@@ -1,0 +1,19 @@
+<mat-card class="patient-card">
+
+  <mat-card-title class="text-center">
+    Post-Visit Survey
+  </mat-card-title>
+
+  <mat-card-content class="text-center">
+    <p>
+      Please take a moment to complete our 1-minute survey so that we may serve you better in the future.
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions class="text-center">
+      <button *ngIf="!hideButton" mat-raised-button color="primary" (click)="goToSurvey()">Okay</button>
+      <button *ngIf="showButton" mat-raised-button color="primary" (click)="viewVisitSummary()">Continue to Visit Summary</button>
+      <button *ngIf="!showButton" mat-raised-button color="primary" (click)="viewVisitSummary()">No, thanks</button>
+  </mat-card-actions>
+
+</mat-card>

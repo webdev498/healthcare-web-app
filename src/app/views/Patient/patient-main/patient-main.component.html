@@ -1,0 +1,41 @@
+<div *ngIf="!isLoaded" fxLayoutAlign="center center">
+	<mat-spinner></mat-spinner>
+</div>
+
+<mat-card class="patient-card" *ngIf="isLoaded">
+
+	<div class="notice" *ngIf="userInfoDTO?.CurrentSubscriptionEndDate != null && userInfoDTO?.NewSubscriptionStartDate == null">
+		<p>*Your subscription will end ---{{ userInfoDTO?.CurrentSubscriptionEndDate }}---. If you did not cancel your plan, please contact customer service at <strong><a [routerLink]="">512-421-5678</a></strong>.</p>
+	</div>
+  
+	<div class="notice" *ngIf="userInfoDTO?.CurrentSubscriptionEndDate != null && userInfoDTO?.NewSubscriptionStartDate != null">
+		<p>*Your subscription will change from a {{ userInfoDTO?.CurrentSubscriptionPlan }} to an {{ userInfoDTO?.NewSubscriptionPlan }} on ---{{ userInfoDTO?.NewSubscriptionStartDate }}---. At this time, family members will be deactivated. If you did not cancel your plan, please contact customer service at <strong><a [routerLink]="">512-421-5678</a></strong>.</p>
+	</div>
+
+	<mat-card-title class="text-center">
+		<!--<mat-icon class="mat-icon material-icons card-navigation-icon" role="img" aria-hidden="true"></mat-icon> &nbsp; -->
+		Welcome back, {{ userInfoDTO?.Name }}
+	</mat-card-title>
+	
+	<mat-card-content class="text-center">
+		<h3>Your account is:
+		<strong>{{ (userInfoDTO?.IsActive) ? 'Active' : 'Deactivated' }}</strong><br>
+		You are covered by: {{ userInfoDTO?.Domain }}</h3>
+
+    	<p>If any of this information is incorrect, please contact customer service at <strong><a [routerLink]="">512-421-5678</a></strong>.</p>
+
+		<p><strong>Customer Service Hours</strong><br />
+		Monday - Friday<br />
+		8 AM - 5 PM CST</p>
+
+    	<br>
+
+		<button mat-raised-button class="cta-button" [disabled]=!state (click)="onClick()">Start Visit</button>
+		<span *ngIf="!state">
+			<button mat-raised-button class="cta-button" (click)="onClickSelectPaymentPlan()">Select Payment Plan</button>
+		</span>
+		<button mat-raised-button (click)="onClickLogout()">Logout</button>
+
+	</mat-card-content>
+	
+</mat-card>

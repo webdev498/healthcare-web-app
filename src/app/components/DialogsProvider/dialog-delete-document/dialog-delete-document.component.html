@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="cancel()" class="hoverclass">clear</mat-icon>
+</div>
+
+<h2 mat-dialog-title>Library</h2>
+
+<mat-dialog-content>
+	<h3>
+		Are you sure you want to delete this document?
+	</h3>
+	<br>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+	<button class="mat-raised-button mat-primary" (click)="confirm()">Yes</button>
+	<button class="mat-raised-button" (click)="cancel()">No</button>
+</mat-dialog-actions>

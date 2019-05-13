@@ -1,0 +1,53 @@
+@import '../../../assets/scss/colors-fonts';
+
+.card-navigation {
+    cursor: pointer;
+    margin: 0 0 1rem 0 !important;
+	padding: 2rem;
+	border-radius: .5rem;
+	color: $text-link-color;
+	
+	h3 {
+		color: $text-link-color;
+		
+		&:hover {
+			color: $text-link-hover-color;
+		}
+	}
+
+	&:active,
+	&.card-navigation-on {
+		h3 {
+			font-weight: 700;
+		}
+	}
+	
+	&.card-navigation-off { 
+		color: #ccc;
+	}
+	
+	.card-navigation-icon {
+		display: inline;
+		vertical-align: top;
+		font-size: 3.2rem; 
+		line-height: 1em;
+		width: 3.2rem;
+		height: 3.2rem;
+		margin-right: -.5rem;
+	}
+	
+	.badge {
+		position: absolute;
+		margin-top: -1rem;
+		margin-right: -1rem;
+		font-size: .6em;
+		background: $badge-bg-color;
+		color: $white-color;
+		min-width: 1.8rem;
+		height: 1.8rem;
+		text-align: center;
+		line-height: 1.8rem;
+		border-radius: 50%;
+		box-shadow: 0 0 1px $box-shadow-color;
+	}
+}

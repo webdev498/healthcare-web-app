@@ -1,0 +1,32 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="cmdCancel_click()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Change Plan</h2>
+
+<div *ngIf="!isLoaded" class="text-center">
+    <mat-spinner>
+    </mat-spinner>
+</div>
+<mat-dialog-content class="dialog-content text-center" *ngIf="isLoaded">
+
+	<p>Are you sure you want to change your subscription plan?</p> 
+
+      <p *ngIf="type == 'Individual Subscription'">
+        This will deactivate all family members covered by this plan at the end of the billing cycle.
+      </p>
+
+      <p *ngIf="type == 'Family Subscription'">
+        Your card will be charged {{'<'}}{{SubscriptionChangeInfoDTO.CostDifference}}{{'>'}} today.
+      </p>
+
+      <p>The new balance of {{ planSelected.Cost }} will be billed monthly starting on
+          {{'<'}}{{SubscriptionChangeInfoDTO.NextBillingDate}}{{'>'}}
+      </p>
+	
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+      <button mat-raised-button color="primary" type="button" [disabled]="patientsSelected > 4" (click)="cmdConfirm_click()">Confirm</button>
+      <button mat-raised-button type="button" (click)="cmdCancel_click()">Cancel</button>      
+</mat-dialog-actions>

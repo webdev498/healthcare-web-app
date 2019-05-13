@@ -1,0 +1,113 @@
+<mat-card class="patient-card">
+	<mat-card-content>
+<div fxLayoutAlign="center center" *ngIf="!isLoaded">
+	<mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="changingPlan == 0 && isLoaded" class="text-center">
+
+	<div class="notice" *ngIf="subscriptionInfo?.CurrentSubscriptionEndDate != null && subscriptionInfo?.NewSubscriptionStartDate == null">
+		<p>*Your subscription will end ---{{ subscriptionInfo?.CurrentSubscriptionEndDate }}---. If you did not cancel your
+			plan, please contact customer service at <strong><a [routerLink]="">512-421-5678</a></strong>.</p>
+	</div>
+
+	<div class="notice" *ngIf="subscriptionInfo?.CurrentSubscriptionEndDate != null && subscriptionInfo?.NewSubscriptionStartDate != null">
+		<p>*Your subscription will change from a {{ subscriptionInfo?.CurrentSubscriptionPlan }} to an {{
+			subscriptionInfo?.NewSubscriptionPlan }} on ---{{ subscriptionInfo?.NewSubscriptionStartDate }}---. At this time,
+			family
+			members will be deactivated. If you did not cancel your plan, please contact customer service at <strong><a
+				 [routerLink]="">512-421-5678</a></strong>.</p>
+	</div>
+
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center stretch" fxLayoutGap="50px" class="columns">
+
+				<div fxFlex="50%" fxFlexFill>
+					<app-manage-members></app-manage-members>
+					<div *ngIf="hasCreditCardInfo != null">
+						<button mat-raised-button (click)="showFormEdit()" color="primary">Update Card Information</button>
+					</div>
+				</div>
+
+				<div fxFlex="50%" fxFlexFill>
+					<app-payment-plan (paymentChange)='changeActiveButton($event)'></app-payment-plan>
+				</div>
+
+			</div>
+
+			<br>
+			<div *ngIf="showError" class="text-red">{{ error }}</div>
+
+			<div fxLayout="row" fxLayoutAlign="center center">
+				<br>
+		<button mat-raised-button (click)="cmdChangePlan_click()" [disabled]="!activeButton">Save Changes</button>
+			<button mat-raised-button color="warn" *ngIf="!isPrepay" (click)="cmdCancel_click()">Cancel Plan</button>
+			</div>
+
+		</div>
+
+		<div *ngIf="changingPlan == 1" class="text-center">
+
+			<h3>Change Plan</h3>
+
+			<p>Changing your subscription will deactivate all family members covered by this plan at the end of the billing cycle.</p>
+
+	<p>The new balance of {{ planSelected.Cost }} will be billed to your card ending in {{ currentSubscriptionEndDate }}
+		monthly starting on ---{{ newSubscriptionStartDate }}---</p>
+
+	<p><strong>Individual Subscription: </strong> <span class="text-red">{{ planSelected.Cost }}</span></p>
+
+	<p><strong>Total Cost: </strong> <span class="text-red">{{ planSelected.Cost }}</span></p>
+
+	<div fxLayoutAlign="center center">
+		<div *ngIf="showError" class="text-red">{{ error }}</div>
+
+		<button mat-raised-button (click)="cmdPrevious_click()">
+			<mat-icon>keyboard_arrow_left</mat-icon> Previous
+		</button>
+		<button mat-raised-button color="primary" (click)="cmdContinue_click()"> Continue
+			<mat-icon>keyboard_arrow_right</mat-icon>
+		</button>
+	</div>
+
+		</div>
+
+<div *ngIf="changingPlan == 2">
+	<div class="text-center">
+		<h3>Change Plan</h3>
+
+		<p>Your card will be charged {{ CostDifference }} today. The new balance of {{ planSelected.Cost }} will be billed
+			monthly to your card ending in {{ currentSubscriptionEndDate }} starting on {{'<'}} {{ newSubscriptionStartDate }}
+			 {{'>'}} . 
+		</p> 
+		
+		<p>Please select up to 4 members* to be covered by the family plan. Additional family members may be
+			added for {{ AdditonalFamilyMemberAmount }}/month.
+		</p>
+
+	</div>
+
+	<div *ngFor="let member of subscriptionInfo.AccountMembers">
+		<mat-checkbox [checked]="member.IsPrimary" [disabled]="member.IsPrimary" (change)="counter($event.checked, member.PatientID)">{{ member.DisplayName }}</mat-checkbox>
+	</div>
+
+			<p>*Including primary account holder</p>
+
+	<p><strong>Family Subscription:</strong> <span class="text-red">{{ planSelected.Cost }}</span></p>
+
+	<p><strong>Total Cost:</strong> <span class="text-red"> ${{ totalCostFamilySubscription }}</span></p>
+
+	<div fxLayoutAlign="center center">
+		<div *ngIf="showError" class="text-red">{{ error }}</div>
+		
+		<button mat-raised-button (click)="cmdPrevious_click()">
+			<mat-icon>keyboard_arrow_left</mat-icon> Previous
+		</button>
+		<button mat-raised-button color="primary" (click)="cmdContinue_click()"> Continue
+			<mat-icon>keyboard_arrow_right</mat-icon>
+		</button>
+	</div>
+
+		</div>
+		
+	</mat-card-content>
+</mat-card>

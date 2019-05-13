@@ -1,0 +1,13 @@
+.notice {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 4rem;
+    text-align: center;
+	background-color: #eee;
+	border-radius: .5rem;
+}
+
+.columns {
+	max-width: 120rem;
+	margin: 0 auto;
+}

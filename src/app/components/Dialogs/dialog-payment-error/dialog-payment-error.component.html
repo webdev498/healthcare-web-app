@@ -1,0 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+  <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+    <mat-dialog-content class="dialog-content text-center">
+        <p>If you believe you have coverage through your insurance plan or your employer and have reached our payment page in error, please hit the back arrow and review your information.
+        </p>
+		
+		<p><strong>Common errors include:</strong></p>
+
+        <ol style="text-align: left;">
+			<li>Family account is registered under a different family member (the person who received the "Welcome/New User" email is the primary account holder)</li>
+			<li>Information is misspelled or missing</li>
+			<li>Name or date of birth do not match the information provided by your employer or insurance plan (i.e. hyphenated last name, nickname, maiden name, etc.)</li>
+        </ol>
+
+        <p>
+      If you still believe there is an error, please contact customer service at <strong><a [routerLink]="">512-421-5678</a></strong>
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions fxLayoutAlign="center start">
+        <button mat-button mat-raised-button (click)="closeDialog()">Okay</button>
+    </mat-dialog-actions>

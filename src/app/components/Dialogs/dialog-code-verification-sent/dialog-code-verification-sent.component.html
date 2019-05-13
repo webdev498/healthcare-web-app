@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Code Sent</h2>
+
+
+<mat-dialog-content class="dialog-content text-center">
+
+    <p>
+        The verification code has been sent.
+    </p>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button class="mat-raised-button mat-primary" (click)="closeDialog()">Okay</button>
+
+</mat-dialog-actions>

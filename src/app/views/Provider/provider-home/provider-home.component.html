@@ -1,0 +1,18 @@
+<div class="main-content-container">
+
+    <div class="column-left">
+        <div class="column-left-container">
+                <app-navigation-column [nav-buttons]="navButtons" (clicked)="navigationColumn_click($event)">
+                </app-navigation-column>
+
+                <br>
+
+                <app-provider-metrics></app-provider-metrics>
+        </div>
+    </div>
+
+    <div class="column-right" [@routerTransition]="getState(o)">
+        <router-outlet #o="outlet"></router-outlet>
+    </div>
+</div>
+

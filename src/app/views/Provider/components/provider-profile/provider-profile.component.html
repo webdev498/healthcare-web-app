@@ -1,0 +1,119 @@
+<div fxLayoutAlign="center center">
+        <mat-spinner *ngIf="!isLoad"></mat-spinner>
+</div>
+<div *ngIf="isLoad">
+    <mat-card class="provider-card">
+        <mat-card-title>
+            <h4>My Profile</h4>
+            <div>
+                <img [src]="getLinkPicture()" style="width: 180px; height: 180px;">
+            </div>
+            <button mat-button class=" btn-change-profile-photo" color="primary" (click)="cmdUpdatePhoto_click()">Change Profile Photo</button>
+        </mat-card-title>
+
+        <mat-card-content>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+                <div fxLayout="row" fxLayoutGap="2px">
+                    <div fxFlex=50%>
+                        <div fxLayout="column" fxLayoutAlign="start center">
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="First Name" formControlName="firstName" value={{providerProf.FirstName}}  oncopy="return false"
+                                    onpaste="return false">
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="Last name" formControlName="lastName"  oncopy="return false" onpaste="return false"
+                                value="{{providerProf.LastName}}">
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <mat-select  placeholder="Gender" formControlName="gender" >
+                                    <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                        {{ gender.viewValue }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="Phone Number" formControlName="phone"  oncopy="return false" onpaste="return false"
+                                value="{{providerProf.Phone}}">
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="Email" formControlName="email"  oncopy="return false" onpaste="return false"
+                                value="{{providerProf.Email}}">
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="Addres Line 1" formControlName="addresLine1"  oncopy="return false" onpaste="return false" value="{{providerProf.Street1}}">
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="Addres Line 2" formControlName="addresLine2"  oncopy="return false" onpaste="return false" value="{{providerProf.Street2}}">
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="City" formControlName="city"  oncopy="return false" onpaste="return false" value="{{providerProf.City}}">
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <mat-select placeholder="State" formControlName="state" oncopy="return false" onpaste="return false" required>
+                                    <mat-option *ngFor="let st of states" [value]="st.value">
+                                        {{ st.viewValue }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="input-width">
+                                <input matInput placeholder="Zip" formControlName="zip"  oncopy="return false" onpaste="return false" value="{{providerProf.Zip}}">
+                            </mat-form-field>
+
+                        </div>
+                    </div>
+                    <div fxFlex="50%">
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Education Medical School" formControlName="education"  oncopy="return false" onpaste="return false" value="{{providerProf.MedicalSchool}}">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="input-width">
+                            <input matInput placeholder="Degree" formControlName="degree"  oncopy="return false" onpaste="return false"
+                            value="{{providerProf.Degree}}">
+                        </mat-form-field>
+                        <br>
+
+                        <mat-form-field class="input-width">
+                            <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Graduation Date" formControlName="graduationdate"
+                            [value]="date.value">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="input-width">
+                            <mat-select placeholder="Specialty" formControlName="speciality" >
+                                <mat-option *ngFor="let sp of speciality.Specialties" [value]="sp.Value">
+                                    {{ sp.Value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="input-width">
+                            <textarea maxlength="250" matInput formControlName="notes" 
+                            value={{providerProf.Notes}}></textarea>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start center">
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <button type="button" mat-raised-button color="primary" (click)="onChangePassword()">Change Password</button>
+                        <button mat-raised-button color="primary" type="submit" >Save Changes</button>
+                    </div>
+
+                </div>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>

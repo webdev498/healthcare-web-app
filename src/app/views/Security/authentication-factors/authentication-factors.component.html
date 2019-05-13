@@ -1,0 +1,48 @@
+<mat-card class="login-card">
+
+    <mat-card-title class="text-center">
+        Verification Account
+    </mat-card-title>
+
+    <mat-card-content class="text-center">
+
+        <div fxLayoutAlign="center center" *ngIf="!isLoad">
+            <mat-spinner></mat-spinner>
+        </div>
+
+        <div *ngIf="isLoad">
+            <p>
+                Would you prefer to receive the verification code by SMS or by email?
+            </p>
+            <form [formGroup]="_formFactors">
+
+                <mat-radio-group>
+					<mat-radio-button (change)=selectOption($event) value="phone">Text {{ phone }}</mat-radio-button>
+					<mat-radio-button (change)=selectOption($event) value="email">Email {{ email}}</mat-radio-button>
+                </mat-radio-group>
+
+                <button type="button" mat-raised-button color="primary" (click)="sendCode()" [(disabled)]="isDisabled">Send Code</button>
+
+                <div fxLayoutAlign="center start" *ngIf="!isLoaded && showSpinner">
+                    <mat-spinner></mat-spinner>
+                </div>
+
+                <div *ngIf="isLoaded">
+					<br />
+                    <mat-form-field>
+                        <input matInput (change)="someCode($event.target.value)" type="number" max="6" min="6" 
+                        placeholder="Please enter verification code" formControlName="code" required>
+                    </mat-form-field>
+                
+					<p *ngIf="failedVerfication" class="error">Verification failed. Please retry or press Send Code to have a new code sent to you.</p>
+					
+					<button mat-raised-button color="primary" type="button" (click)="onSubmit()" [disabled]="isDisabledSubmit">Verify and Login</button>
+					
+				</div>
+
+            </form>
+        </div>
+
+    </mat-card-content>
+
+</mat-card>

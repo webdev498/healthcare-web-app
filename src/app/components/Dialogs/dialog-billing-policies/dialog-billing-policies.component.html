@@ -1,0 +1,34 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+  
+  <h2 mat-dialog-title class="dialog-title text-center">Billing Policies</h2>
+
+  <mat-dialog-content class="dialog-content text-center">
+    <h3>Updating Credit Card</h3>
+    <p>Patients may update and save credit card information at any time. Changes will become affective on the next scheduled billing
+		date.</p>
+
+    <h3>Subscription Plan Cancellation</h3>
+    <p>Patients may opt to cancel their individual or family subscription plan at any time and it will take effect at the end of
+    their biling cycle. Partial-month refunds will not be issued.</p>
+
+    <h3>Subscription Plan Upgrade</h3>
+    <p>Patients can transition from an individual plan to a family plan at any time and access for new members becomes affective
+    immediately. The difference is billed at the time of the change. The updated balance will be charged on the existing
+    monthly biling schedule.</p>
+
+    <h3>Subscription Plan Downgrade</h3>
+    <p>Patients can transition from an family plan to an individual plan at any time. Family plan access remains active until the
+    start of the next biling schedule. The updated balance will be charged on the existing monthly biling schedule. Partial-month
+    refunds will not be issued.</p>
+
+    <h3>Adding Additional Family Member(s)</h3>
+
+    <p>Additional family members may be added to a full family account effective immediately. Additional member charges will be
+		billed at the time of the charge. The updated balance will be charged on the existing monthly biling schedule.</p>
+
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="center center">
+    <button mat-raised-button (click)="closeDialog()">Okay</button>
+  </mat-dialog-actions>

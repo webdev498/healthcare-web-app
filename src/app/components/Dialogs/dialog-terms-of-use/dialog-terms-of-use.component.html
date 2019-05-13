@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Terms of Use</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+            <p>Welcome to eMD Access.</p>
+            <p>This application (“Site”) and related services are provided by eMD Access, in cooperation with Austin Regional
+                Clinic. Please read the following information carefully.</p>
+            <h3>Subscription and Registration for Texas Residents</h3>
+            <p>Subscription access is available for Texas residents only. All users must reside in Texas a minimum of 6 months
+                out of the calendar year.</p>
+            <p>eMD Access is not an insurance plan. eMD Access is a subscription web-based service that enables direct access
+                to physicians.</p>
+            <p>Subscription is automatically renewed monthly, or every 30 days. At the end of the monthly subscription period,
+                you will automatically be signed up and billed for an additional subscription term of 30 days. If you do
+                not wish your subscription to auto-renew, you may remove your credit card information prior to the end of
+                your current subscription term.</p>
+            <p>When creating an account, please provide current, complete, and accurate information. Please access the Site
+                features using only your user ID and password and protect the confidentiality of your account. Please refrain
+                from harmful, unethical, or offensive communication.</p>
+            <h3>Availability of the Site</h3>
+            <p>eMD Access makes reasonable efforts to keep the Site operational. If the Site is unavailable, please know that
+                efforts are underway to restore availability ASAP.</p>
+            <p>If you require immediate emergency medical assistance, contact 9-1-1 or go to your nearest emergency department.</p>
+            <p>For questions or assistance, please contact Customer Service, M-F, 8am-5pm, at 512-421-5678.</p>
+            <h3>Telemedicine Physicians and Prescriptions</h3>
+            <p>Your interaction with the physicians of eMD Access does not replace your relationship with your primary care
+                physician. eMD Access does not guarantee that a prescription will be written. eMD Access physicians do not
+                prescribe DEA controlled substances, non-therapeutic drugs, and certain other drugs which may be harmful
+                because of their potential abuse.</p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+	<button mat-button mat-raised-button (click)="closeDialog()">I have read the terms of use</button>
+</mat-dialog-actions>

@@ -1,0 +1,20 @@
+@import 'src/assets/scss/colors-fonts';
+
+.card-provider-metrics
+{
+    cursor: pointer;
+    min-width:85%;
+    vertical-align: top;
+    color: $text-gray-color;
+    padding-top: 0px;
+    padding-left: 10px;
+}
+
+.card-provider-metrics-icon
+{
+   display:inline-block;
+   vertical-align:middle;
+   margin-top:-3px;
+}
+
+

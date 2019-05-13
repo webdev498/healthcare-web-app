@@ -1,0 +1,74 @@
+<div fxLayoutAlign="center center">
+        <mat-spinner *ngIf="!isLoad"></mat-spinner>
+</div>
+<div *ngIf="isLoad">
+	
+	<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+		<div fxLayout="row" fxLayoutGap="5px" fxFill>
+			<div fxFlex="50%">
+				<p>Patient Age Range (in Years)</p>
+				<div fxLayout="row" fxLayoutGap="5px">									
+					<mat-form-field>
+						<mat-select placeholder="Min Age" formControlName="minAge">
+							<mat-option></mat-option>
+							<mat-option *ngFor="let age of ageRange" [value]="age">
+								{{age}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<mat-form-field>
+						<mat-select placeholder="Max Age" formControlName="maxAge">
+							<mat-option></mat-option>
+							<mat-option *ngFor="let age of ageRange" [value]="age">
+								{{age}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<br>
+				<h2>Notifications</h2>
+				<p>Notification Preference</p>
+				<div fxLayout="column">
+						<mat-radio-group class="example-radio-group" >
+							<mat-radio-button class="example-radio-button" value="phone" checked="{{checkedPhone}}" (click)="changePhone()">
+								<span>Text</span>{{preference.Phone}}
+							</mat-radio-button>	
+							<mat-radio-button class="example-radio-button" value="email" checked="{{checkedEMail}}" (click)="changeEmail()">
+								<span>Email</span>{{preference.Email}}
+							</mat-radio-button>				
+						</mat-radio-group>							
+							<br>
+							<br>
+							<mat-form-field>
+								<mat-select placeholder="Repeat Alert" formControlName = "alert">
+									<mat-option *ngFor="let alert of alerts" [value]="alert.value">
+										{{alert.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+				</div>
+				
+			</div>
+			<div fxFlex="50%">
+				<h2>Security Question</h2>
+				<p>3 Question Required</p>
+				<br>
+				
+					<div fxLayout="column" fxLayoutAlign="end">
+						<div formArrayName="questions" fxfxLayout="column">
+								<div  *ngFor="let item of question.controls; let i=index">	
+									
+									<mat-form-field fxFlex>
+										<input matInput  [formControlName]="i" placeholder="{{item.value.placeholder}}" value="{{item.value.value}}" >
+									</mat-form-field>								
+									
+								</div>
+								<br>								
+						</div>
+						
+					</div>
+					<button mat-raised-button color="primary" type="submit">Save</button>			
+			</div>
+		</div>
+	</form>	
+</div>

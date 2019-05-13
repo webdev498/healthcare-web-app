@@ -1,0 +1,59 @@
+<div class="site-header logged-in">
+	<mat-toolbar>
+		<div class="logo">
+			<img src="../../../assets/images/logo-emd-access.png" alt="eMD Access" (click)="actionHome()">
+			<small class="tagline">It's like having a doctor in your pocket</small>
+		</div>
+		
+		<!-- AVAILABLE / UNAVAILABLE -->
+		<!--<button mat-button
+				#cmdUserStatus
+				[style.visibility]="isProviderRole() ? 'visible' : 'hidden'"
+				[matMenuTriggerFor]="userStatusMenu"
+		>
+		<mat-icon>accessibility</mat-icon> Available</button>-->
+
+		<!-- PATIENT / PROVIDER / [BOTH] -->
+		<!--<button mat-button
+				#cmdUserRole
+				[style.visibility]="isBothRoles() ? 'visible' : 'hidden'"
+				[matMenuTriggerFor]="userRoleMenu"
+		>
+		<mat-icon>local_hospital</mat-icon> Provider</button>-->
+		<div class="options">
+				<div [style.display]="isProviderRole() ? 'block' : 'none'">
+						<mat-form-field>
+							<mat-select [(value)]="selectedAv" (selectionChange)="changeAvailability()">
+								<mat-option *ngFor="let av of availables" [value]="av.value" >
+								{{av.viewValue}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+				</div>
+				<div [style.display]="isProviderRole() ? 'block' : 'none'">
+						<mat-form-field>
+							<mat-select [(value)]="selected" (selectionChange)="changeRole()">
+								<mat-option *ngFor="let rol of rols" [value]="rol.value" >
+								{{rol.viewValue}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+				</div>    
+				<div>
+					<button mat-raised-button (click)="cmdLogout_click()">Logout</button>
+				</div>
+
+		</div>
+	</mat-toolbar>
+
+	<mat-menu [hidden]="(!isProviderRole())" #userStatusMenu="matMenu">
+		<button mat-menu-item (click)="cmdAvailable_click($event)"><mat-icon>accessibility</mat-icon> Available </button>
+		<button mat-menu-item (click)="cmdUnavailable_click($event)"><mat-icon>local_hotel</mat-icon> Unavailable </button>
+	</mat-menu>
+
+	<mat-menu #userRoleMenu="matMenu">
+		<button mat-menu-item (click)="cmdProvider_click($event)"><mat-icon>local_hospital</mat-icon> Provider </button>
+		<button mat-menu-item (click)="cmdPatient_click($event)"><mat-icon>pregnant_woman</mat-icon> Patient </button>
+	</mat-menu>
+	
+</div>

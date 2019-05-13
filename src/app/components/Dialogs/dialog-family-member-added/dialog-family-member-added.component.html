@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Add Family Member</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+		<p>
+				{{data.newPatient.FirstName}} {{data.newPatient.LastName}} will be added to your familly.
+		</p>
+		<p>Total Cost: $4.95/mo</p>
+
+		<mat-icon>add_circle</mat-icon>
+		<mat-checkbox (change)="changeAnotherMember($event)">Add another family member?</mat-checkbox>
+	
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+		<button mat-button mat-raised-button color="primary" (click)="confirmRegistration()">Accept &amp; Pay</button>
+		<button mat-button mat-raised-button (click)="closeDialog()">Cancel</button>
+</mat-dialog-actions>

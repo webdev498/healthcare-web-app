@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Addenda</mat-card-title>
+        <mat-card-subtitle>
+            <p *ngIf="ifaddenda">
+                There are no addenda for this visit. Tap the + button to add
+            </p>
+            <p *ngIf="!ifaddenda">
+                Tap the + button to add
+            </p>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <button mat-raised-button color="primary" (click)="addAddendum()"><mat-icon>add</mat-icon>Add Addendum</button>
+        <br><br><br>
+        <div fxLayout="columns">
+            <table mat-table [dataSource]="visits" class="mat-elevation-z8" fxFlex="100%" fxFlexFill>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="DoctorName">
+                    <th *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" class="extra">
+
+                        <div fxLayout="row">
+                            <div fxFlex="80" fxLayout="row wrap">
+                                <div fxFlex="50">{{ element.ProviderName }} </div>
+                                <div fxFlex="50">{{ element.TimeEntered }}</div>
+                                <div fxFlex="100">{{ element.Text }} </div>
+                            </div>
+                            <div fxFlex="20" fxLayoutAlign="center center">
+                                <mat-icon>keyboard_arrow_right</mat-icon>
+                            </div>
+                        </div>
+
+                    </td>
+                </ng-container>
+                <tr mat-header-row style="display: none;" *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover-member" (click)="showDatails_click(row)">
+                </tr>
+            </table>
+        </div>
+
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="dialog-title text-center">Add Allergies</h2>
+
+<mat-dialog-content class="dialog-content text-center">
+    <mat-form-field>
+        <input matInput placeholder="Allergy Name" [(ngModel)]="name">
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput maxlength="250" [(ngModel)]="description" placeholder="Include type of reaction (ex: Throat swelling, hives, etc.) and severity"></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+    <button class="mat-raised-button mat-primary" (click)="saveAllergy()">Save</button>
+</mat-dialog-actions>

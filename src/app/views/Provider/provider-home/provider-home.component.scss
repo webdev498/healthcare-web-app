@@ -1,0 +1,68 @@
+@import 'src/assets/scss/colors-fonts';
+
+.main-content-container
+{
+    min-width:1024px;
+    display: flex;
+
+    .column-left
+    {
+        width: 380px;
+        // height:100%;
+        background-color: $navigation-bg-color;
+        flex-shrink: 0;
+        box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+        z-index: 1;
+
+        .column-left-container
+        {
+            padding: 16px;
+
+            .card-navigation
+            {
+                cursor: pointer;
+                margin-top: 8px;
+                min-width:85%;
+                vertical-align: top;
+                color: #888;
+
+                &:hover {
+                    background-color: #eee;
+                    color: rgba(73, 76, 167, 0.467);
+                }
+                &:active {
+                    background-color: rgba(73, 76, 167, 0.467);
+                    color: #eee;    
+                }
+
+                .card-navigation-icon
+                {
+                    display:inline-block;
+                    vertical-align:middle;
+                    margin-top:-3px;
+                }
+            }
+
+            .card-navigation-on
+            {
+                background-color: rgba(73, 76, 167, 0.467);
+                color: #eee;
+            }
+        }
+    }
+
+    .column-right
+    {
+        flex: 1 1;
+        // height:700px;
+
+        .provider-card {
+            margin: 0;
+        }
+    }
+}
+
+
+
+
+

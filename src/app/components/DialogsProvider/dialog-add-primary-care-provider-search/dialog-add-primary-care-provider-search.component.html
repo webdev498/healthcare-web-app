@@ -1,0 +1,90 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="cancel()" class="hover-close">close</mat-icon>
+</div>
+
+
+<h2 mat-dialog-title>Add Primary Care Provider</h2>
+
+<mat-dialog-content>
+	<div fxLayout="column" fxLayoutAlign="center center">
+		<!--Mostrar el formulario por defecto para buscar el provider-->
+		<div *ngIf="search && !dontSee">
+			<mat-form-field>
+				<input matInput placeholder="First Name" [(ngModel)]="firstName">
+			</mat-form-field>
+			<br>
+			<mat-form-field>
+				<input matInput placeholder="Last Name" [(ngModel)]="lastName">
+			</mat-form-field>
+			<br>
+			<mat-form-field>
+				<input matInput placeholder="City" [(ngModel)]="city">
+			</mat-form-field>
+			<br>
+			<mat-form-field>
+				<input matInput placeholder="State" [(ngModel)]="state">
+			</mat-form-field>
+			<br>
+		</div>
+
+
+		<div *ngIf="!search">
+			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+				<!-- Name Column -->
+				<ng-container matColumnDef="name">
+					<th mat-header-cell *matHeaderCellDef> Name </th>
+					<td mat-cell class="hover-provider" *matCellDef="let element"> {{element.name}} </td>
+				</ng-container>
+
+				<!-- Weight Column -->
+				<ng-container matColumnDef="title">
+					<th mat-header-cell *matHeaderCellDef> Title </th>
+					<td mat-cell class="hover-provider" *matCellDef="let element"> {{element.title}} </td>
+				</ng-container>
+
+				<!-- Symbol Column -->
+				<ng-container matColumnDef="specialty">
+					<th mat-header-cell *matHeaderCellDef> Specialty </th>
+					<td mat-cell class="hover-provider" *matCellDef="let element"> {{element.specialty}} </td>
+				</ng-container>
+
+				<tr style="display: none" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row (click)="cmdSelectProvider_click(row)" [ngStyle]="{'background-color':getColor(row) }" *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+
+			<br>
+
+			<mat-checkbox (click)="dontSeeProvider_click()">Don't see your primary care provider name or group practice?</mat-checkbox>
+
+		</div>
+
+
+		<div *ngIf="dontSee">
+			<mat-form-field>
+				<input matInput placeholder="Provider First and Last Name OR Practice Name*" [(ngModel)]="fullName">
+			</mat-form-field>
+			<br>
+			<mat-form-field>
+				<input matInput placeholder="City" [(ngModel)]="city">
+			</mat-form-field>
+			<br>
+			<mat-form-field>
+				<input matInput placeholder="State" [(ngModel)]="state">
+			</mat-form-field>
+			<br>
+			<mat-form-field>
+				<input matInput placeholder="Practice or Provider Phone" [(ngModel)]="phone">
+			</mat-form-field>
+			<br>
+		</div>
+
+
+
+	</div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center start">
+	<button *ngIf="search" class="mat-raised-button mat-primary" (click)="searchPrimaryCareProvider()">Search</button>
+	<button *ngIf="!search" class="mat-raised-button mat-primary" (click)="selectProvider()">Select</button>
+</mat-dialog-actions>

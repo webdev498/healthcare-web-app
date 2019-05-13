@@ -1,0 +1,14 @@
+<mat-card class="provider-card">
+    <mat-card-title>       
+    </mat-card-title>
+    <mat-card-content>
+        <mat-tab-group [selectedIndex]="selected">
+            <mat-tab label="My Profile"> 
+                <app-provider-profile></app-provider-profile>
+            </mat-tab>
+            <mat-tab label="Preferences">
+                <app-provider-security-questions></app-provider-security-questions> 
+            </mat-tab>            
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>

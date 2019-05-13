@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="closeDialog()" class="hover-close">close</mat-icon>
+</div>
+
+<mat-dialog-content class="dialog-content text-center">
+
+	<h3>Selecting Make Private</h3>
+
+	<p>Each individual's medical information is, by default, viewable by all other members under a family account. To make a member profile separate and private, select this option then provide a unique email address. Follow instructions sent to the email address to complete the process. The member remain on the family account for billing purposes, but access to their medical information is limited to the member only. There is no fee associated with this selection. This option is not available for primary account holder or children under 13 years of age.</p>
+
+	<h3>Selecting Deactivate User</h3>
+
+	<p>Deactivate a member creates an opening to add a different family member under a family plan without additional expense, or may allow you to downgrade your subscription plan. Past medical and visit information will remain available on this member's account for review, but new visits will not be permitted while the account is deactivated. If another member is not added, the deactivated user will remain active through the end of the current billing period. A deactivated account can be reativated at any time.</p>
+
+	<h3>Selecting Remove User</h3>
+
+	<p>This option completely removes a family member and all of their information from the family account. by entering a unique email address, the removed member can create their own separate account for billing and other puroposes. Providing an email address ensures that the account remains accessible to the member in the future. The member is removed immediately upon this selection, which may create an opening to add a different family member without additional expense or it may allow you to downgrade your subscription plan.</p>
+
+	<p><strong>For Further Assitance:</strong><br> Call Customer Service at <strong><a [routerLink]="">512-421-5678</a></strong> between the hours of 8 AM-5 PM CST, Monday-Friday</p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="center center">
+	<button mat-raised-button color="primary" (click)="confirmDialog()">Okay</button>
+</mat-dialog-actions>

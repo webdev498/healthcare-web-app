@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <p *ngIf="absence">
+                There are no absence notes for this visit. Top the + icon to add
+            </p>
+            <p *ngIf="!absence">
+                Tap the + button to add
+            </p>
+        </mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content>
+        <button mat-raised-button color="primary" (click)="absenseNote()"><mat-icon>add</mat-icon>Add Absence Notes</button>
+        <br><br>
+        <div fxLayout="columns">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" fxFlex="100%" fxFlexFill>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="PatientName">
+                    <th *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" class="extra">
+
+                        <div fxLayout="row">
+                            <div fxFlex="80" fxLayout="row wrap">
+                                <div fxFlex="50">{{ element.PatientName }} </div>
+                                <div fxFlex="50">{{ element.TimeEntered }}</div>
+                                <div fxFlex="100">{{ element.ProviderName }} </div>
+                            </div>
+                            <div fxFlex="20" fxLayoutAlign="center center">
+                                <mat-icon>keyboard_arrow_right</mat-icon>
+                            </div>
+                        </div>
+
+                    </td>
+                </ng-container>
+                <tr mat-header-row style="display: none;" *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover-member" (click)="showDatails_click(row)">
+                </tr>
+            </table>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,37 @@
+.column-left
+{
+    float:left;    
+    height:100%;
+    margin-top:40px;
+    padding: 20px;
+    margin: 20Px;
+    background-color: #ff9f43;
+}
+
+.column-right
+{
+    float:right;
+    min-width:65%;
+    height:700px;
+    padding-right:30px;
+    margin-top: -7px
+}
+
+.column-left-container
+{
+    padding: 16px;
+}
+.button-chat{    
+    border-bottom-color: lightslategray;
+    border-right-color: lightgray;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+
+}
+.button-chat:hover{
+    cursor: pointer;
+    background-color: blue;
+}
+.hideButton{    
+    visibility: hidden;
+}

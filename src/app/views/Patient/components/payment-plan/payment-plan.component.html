@@ -1,0 +1,61 @@
+
+<div fxLayoutAlign="center start" *ngIf="!isLoaded">
+	<mat-spinner></mat-spinner>
+</div>
+
+<h2 *ngIf="isLoaded" class="text-center">
+	Payment Plan
+	<mat-icon (click)="showInformationPlanDialog()">info</mat-icon>
+</h2>
+
+<div *ngIf="isLoaded" class="text-center">
+
+		<form>
+
+			<mat-form-field>
+                    <mat-select placeholder="Plans" required [(value)]="subscription" [disabled]="isPrepay">
+					<ng-container *ngFor="let plan of plans">
+						<mat-option (click)="selectPlan(plan)" [value]="plan.Name">
+							{{ plan.Name }}
+						</mat-option>
+					</ng-container>
+				</mat-select>
+			</mat-form-field>
+
+			<div *ngIf="subscriptionInfo.CurrentSubscriptionPlan === 'Family Subscription' && !isSelectedToShow">
+				<p>
+					<strong>Family Subscription:</strong><br>
+					<span class="text-red">{{ selected.Cost }}</span>
+				</p>
+
+				<strong>Additional Family Members:</strong>
+				<mat-form-field class="family-input">
+					<input matInput placeholder="{{ totalMembers }}" readonly>
+				</mat-form-field>
+
+				<p>
+					<strong>Additional Family Members:</strong><br>
+					<span class="text-red">{{ subscriptionInfo.AvailableSubscriptionAddOns["0"].Cost }}</span>
+				</p>
+
+				<p>
+					<strong>Subscription Total:</strong><br>
+					<span class="text-red">{{ subscriptionInfo.CurrentSubscriptionTotalCost }}</span>
+				</p>
+			</div>
+
+		</form>
+
+		<div *ngIf="selected && !(subscriptionInfo.CurrentSubscriptionPlan === 'Family Subscription' && !isSelectedToShow)">
+			<p>
+				<strong>{{ selected.Name }}:</strong><br>
+				{{ selected.PlanDescription }}
+			</p>
+
+			<p>
+				<strong>New subscription total:</strong><br>
+				<span class="text-red">{{ selected.Cost }}</span>
+			</p>
+		</div>
+
+</div>

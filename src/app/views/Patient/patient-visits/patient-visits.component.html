@@ -1,0 +1,49 @@
+<mat-card class="patient-card">
+
+	<mat-card-title></mat-card-title>
+
+	<mat-card-content>
+	
+	    <div *ngIf="!isLoaded" fxLayoutAlign="center center">
+			<mat-spinner></mat-spinner>
+	    </div>
+
+    	<div *ngIf="isLoaded">
+			<div fxLayoutAlign="end start">
+				<mat-form-field>
+					<mat-select placeholder="Filter by patient">
+						<mat-option value="All" (click)="applyFilter()">All</mat-option>
+						<mat-option *ngFor="let patient of patients" [value]="patient.DisplayName" (click)="applyFilter(patient.PatientID)">{{ patient.DisplayName }}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+    	<div *ngIf="isLoaded">
+      		<table mat-table [dataSource]="dataSource" class="" fxFlex="100%" fxFlexFill>
+
+	        	<!--- Note that these columns can be defined in any order.
+				The actual rendered columns are set as a property on the row definition" -->
+
+		        <!-- Position Column -->
+		        <ng-container matColumnDef="PatientDisplayName">
+					<th *matHeaderCellDef></th>
+					<td mat-cell *matCellDef="let element" class="extra">
+						<div fxLayout="row" fxLayoutAlign="start center">
+							<h5 fxFlex="50">{{ element.ProviderName }}</h5>
+							<div fxFlex="50">{{ element.StartTime }}</div>
+						</div>
+						<div fxLayout="row" fxLayoutAlign="start center">
+							<div fxFlex="50">{{ element.PatientFirstName }} {{ element.PatientLastName }} </div>
+							<div fxFlex="50">Status: <span [ngClass]="(element.Status!='Complete')?'text-red':''">{{ element.Status }}</span></div>
+						</div>
+		          </td>
+		        </ng-container>
+
+        		<tr mat-header-row style="display: none;" *matHeaderRowDef="displayedColumns"></tr>
+        		<tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showVisitDatails_click(row.VisitID)" class="hover-member"></tr>
+      		</table>
+    	</div>
+		
+	</mat-card-content>
+  
+</mat-card>

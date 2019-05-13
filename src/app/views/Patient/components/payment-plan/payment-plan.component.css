@@ -1,0 +1,22 @@
+@import '../../../../../form-elements.css';
+
+h2 {
+	margin-top: 0;
+}
+
+.mat-icon {
+	cursor: pointer;
+}
+
+.mat-icon-button,
+.mat-datepicker-toggle {
+	font-size: 2.4rem;
+	color: #939393;
+	vertical-align: middle;
+	line-height: 36px;
+}
+
+.family-input {
+	text-align: center;
+	max-width: 5rem;
+}

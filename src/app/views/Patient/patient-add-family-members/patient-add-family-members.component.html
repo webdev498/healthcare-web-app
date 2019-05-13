@@ -1,0 +1,100 @@
+<mat-card class="patient-card">
+	
+    <mat-card-title class="text-center">
+		Add Family Member
+    </mat-card-title>
+
+    <mat-card-content>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+			<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="30px" class="columns">
+				<div fxFlex="50%">
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Title" formControlName="title">
+						<mat-select placeholder="Title" formControlName="title">
+							<mat-option *ngFor="let t of titles" [value]="t.value">
+								{{ t.value }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="First Name" formControlName="firstName" required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Middle Name" formControlName="midleName">
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Last name" formControlName="lastName" required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Date of Birth" formControlName="dateOfBirth" required>
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<mat-select placeholder="Gender" formControlName="gender" required>
+							<mat-option *ngFor="let gender of genders" [value]="gender.value">
+								{{ gender.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<mat-select placeholder="Relationship to You" formControlName="relationship">
+							<mat-option *ngFor="let rel of relations" [value]="rel.value">
+								{{ rel.value }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					
+				</div>
+				<div fxFlex="50%">
+					
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Primary Phone Number" formControlName="phone" required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Address line 1" formControlName="addressLine1" required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Address line 2" formControlName="addressLine2">
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="City" formControlName="city" required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width" *ngIf="!isPrivate">
+							<mat-select placeholder="State" formControlName="state" required>
+								<mat-option *ngFor="let st of states" value="{{st.value}}">
+									{{ st.viewValue }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Zip" formControlName="zip" required>
+					</mat-form-field>
+					
+				</div>
+			</div>
+
+			<div class="text-center">
+				<br>
+				<button mat-raised-button type="button" (click)="onPrevious()">Previous</button>
+				<button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Continue</button>
+			</div>
+
+        </form>
+
+    </mat-card-content>
+
+</mat-card>

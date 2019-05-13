@@ -1,0 +1,37 @@
+@import 'src/assets/scss/colors-fonts';
+
+h3
+{
+    color: gray;
+}
+
+.provider-card {
+    padding: 0 !important;
+    
+    .mat-card-title {
+        margin: 0;
+    }
+
+    .mat-card-content {
+        .mat-tab-header {
+            .mat-tab-label-container {
+                background-color: $text-link-color;
+            }
+        }
+
+        .mat-tab-body-wrapper {
+            padding: 0;
+        }
+
+    }
+
+    
+}
+
+.card-navigation-icon
+{
+   display:inline-block;
+   vertical-align:middle;
+   margin-top:-3px;
+}
+

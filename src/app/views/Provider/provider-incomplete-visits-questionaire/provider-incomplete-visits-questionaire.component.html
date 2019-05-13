@@ -1,0 +1,87 @@
+<mat-card>
+	<mat-card-title>
+		<h3>
+			<span>
+				Provider Visit Questionnaire
+			</span>
+		</h3>
+	</mat-card-title>
+
+	<mat-card-content>
+		<form [formGroup]="_questionnaireForm" novalidate>
+
+			<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+				<div fxFlex="50%" fxFlexFill class="adjust">
+					<span>1- Was this encounter:</span>
+					<br>
+					<mat-radio-group formControlName="encounter">
+						<mat-radio-button value="Advice and Triage">Advice and Triage</mat-radio-button>
+						<br>
+						<mat-radio-button value="Diagnosis and Treatment">Diagnosis and Treatment?</mat-radio-button>
+					</mat-radio-group>
+					<br>
+					<br>
+					<br>
+
+					<span>2- Was Rx written?</span>
+					<br>
+					<mat-radio-group formControlName="rx">
+						<mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;  	&nbsp;
+						<mat-radio-button value="No">No</mat-radio-button>
+					</mat-radio-group>
+					<br>
+					<br>
+					<br>
+
+					<span>3- Was lab or radiology ordered?</span>
+					<br>
+					<mat-checkbox formControlName="lab">Lab</mat-checkbox> &nbsp;  	&nbsp;
+					<mat-checkbox formControlName="radiology">Radiology</mat-checkbox>
+					<br>
+
+				</div>
+
+				<div fxFlex="50%" fxFlexFill class="adjust">
+					<span>4- Referral/Follow-up? </span>
+					<br> (Select any that applu)
+					<br>
+
+					<mat-checkbox formControlName="followPCP">Follow up PCP</mat-checkbox>
+					<br>
+
+					<mat-checkbox (change)="enableFieldSpecialty($event)">Radiology</mat-checkbox>
+					<mat-form-field style="width: 100%;">
+						<input matInput formControlName="followSpecialist">
+					</mat-form-field>
+					<br>
+
+					<mat-checkbox formControlName="goER">Go to ER</mat-checkbox>
+					<br>
+
+					<mat-checkbox formControlName="goAfterHoursUrgentCare">Go to Afterhours or Urgent Care </mat-checkbox>
+					<br>
+
+					<mat-checkbox (change)="enableFieldFollowUpTelemedicine($event)">Follow Up Telemedicine </mat-checkbox>
+					<br>
+					<mat-form-field>
+						<input matInput [matDatepicker]="picker" formControlName="followTelemedicine">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+
+					<br>
+				</div>
+
+			</div>
+
+			<!-- Password Validation -->
+			<br/>
+			<br/>
+			<br/>
+			<div fxLayoutAlign="center center">
+				<button mat-raised-button type="button" (click)="cmdCompleteVisit_click()">Complete Visit</button>
+			</div>
+		</form>
+
+	</mat-card-content>
+</mat-card>

@@ -1,0 +1,20 @@
+<div fxLayout="row" fxLayoutAlign="end end">
+	<mat-icon (click)="Close()" class="hoverclass">clear</mat-icon>
+</div>
+
+<mat-card>
+	<h1>Change Role</h1>
+	<p>
+		Change Role to Patient?
+	</p>
+
+	<div fxLayout="row" fxLayoutGap="20px">
+		<div>
+			<button mat-raised-button (click)="Change()">Ok</button>
+		</div>
+		<div>
+			<button mat-raised-button (click)="Close()">Cancel</button>
+		</div>
+	</div>
+
+</mat-card>

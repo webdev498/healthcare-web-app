@@ -1,0 +1,98 @@
+<mat-card class="patient-card">
+	
+	<div *ngIf="!isLoaded" fxLayoutAlign="center center">
+		<mat-spinner></mat-spinner>
+    </div>
+
+    <mat-card-title class="text-center" *ngIf="isLoaded">
+		{{ patient.FirstName }} {{ patient.LastName }}'s Profile
+    </mat-card-title>
+
+    <mat-card-content *ngIf="isLoaded">
+        
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+			
+            <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="50px" class="columns">
+				
+                <div fxFlex="50%">
+                    <div class="photo text-center">
+                        <img [src]="getLinkPicture()" alt="profile photo" width="150px" height="150px">
+                        <br>
+
+                        <button mat-button color="accent" (click)="cmdUpdatePhoto_click()">Change Profile Photo</button>
+                    </div>
+					<br />
+					<mat-form-field class="input-width">
+						<mat-select placeholder="Title" formControlName="title">
+							<mat-option *ngFor="let t of titles" [value]="t.value">
+								{{ t.value }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="First Name" formControlName="firstName" value={{patient.FirstName}} required>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Middle Name" formControlName="midleName" value={{patient.MiddleName}}>
+					</mat-form-field>
+
+					<mat-form-field class="input-width">
+						<input matInput placeholder="Last name" formControlName="lastName" required value={{patient.LastName}}>
+					</mat-form-field>
+
+                </div>
+                <div fxFlex="50%">
+					
+                    <mat-form-field class="input-width">
+                        <input matInput [matDatepicker]="picker" (focus)="picker.open()" [value]="date.value" placeholder="Date of Birth" formControlName="dateOfBirth">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-width">
+                        <mat-select placeholder="Gender" formControlName="gender" required>
+                            <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                {{ gender.viewValue }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-width">
+                        <input matInput placeholder="Phone Number" formControlName="phone" required value={{patient.PrimaryPhone}}>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-width">
+                        <mat-select placeholder="Relationship to You" formControlName="relationship" required>
+                            <mat-option *ngFor="let rel of relations" [value]="rel.value" (click)="selectRelationship(rel.value)">
+                                {{ rel.value }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-width" *ngIf="otherRelationship">
+                        <input matInput placeholder="Other" formControlName="other" required>
+                    </mat-form-field>
+					
+                </div>
+				
+            </div>
+            
+            <div class="text-center" *ngIf="showResultOperation">
+				<br>
+                <span *ngIf="resultOperation" class="text-green">{{ messageUpdateOperation }}</span>
+                <span *ngIf="!resultOperation" class="text-red">{{ messageUpdateOperation }}</span>
+            </div>
+            <br>
+
+            <div class="text-center">
+				<br>
+				<button mat-raised-button color="primary" type="submit">Save Changes</button>
+            </div>
+			
+        </form>
+
+    </mat-card-content>
+
+</mat-card>
